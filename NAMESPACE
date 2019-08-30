@@ -3,6 +3,7 @@
 S3method(update,data.frame)
 export(count_distinct)
 export(ensure_distinct)
+export(exact_join)
 export(expand_grid)
 export(extract_lookup_table)
 export(fun_join)

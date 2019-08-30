@@ -4,7 +4,8 @@
 \alias{fun_join}
 \title{(Left) join with a custom comparator}
 \usage{
-fun_join(left, right, by = intersect(names(left), names(right)), fun = `==`)
+fun_join(left, right, by = intersect(names(left), names(right)),
+  fun = `==`)
 }
 \arguments{
 \item{left}{data.frame}

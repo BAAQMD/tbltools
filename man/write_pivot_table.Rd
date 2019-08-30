@@ -4,8 +4,8 @@
 \alias{write_pivot_table}
 \title{Save a pivot table to disk}
 \usage{
-write_pivot_table(object, file, overwrite = TRUE, ...,
-  verbose = getOption("verbose"))
+write_pivot_table(object, file, overwrite = TRUE, selfcontained = TRUE,
+  ..., verbose = getOption("verbose"))
 }
 \arguments{
 \item{object}{created with `pivot_table()`}
