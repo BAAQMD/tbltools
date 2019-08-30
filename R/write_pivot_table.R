@@ -5,16 +5,32 @@
 #' @param ... further arguments to [htmlwidgets::saveWidget()]
 #' @param verbose (logical)
 #'
-#'
 #' @export
-write_pivot_table <- function (object, file, overwrite = TRUE, ..., verbose = getOption("verbose")) {
+write_pivot_table <- function (
+  object,
+  file,
+  overwrite = TRUE,
+  selfcontained = TRUE,
+  ...,
+  verbose = getOption("verbose")
+) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[write_pivot_table] ", ...)
 
   tmpfn <- tempfile()
 
-  htmlwidgets::saveWidget(object, tmpfn, ...)
-  success <- file.copy(tmpfn, file, overwrite = overwrite)
+  htmlwidgets::saveWidget(
+    object,
+    tmpfn,
+    selfcontained = selfcontained,
+    ...)
+
+  success <- file.copy(
+    from = tmpfn,
+    to = file,
+    overwrite = overwrite,
+    recursive = TRUE)
+
   stopifnot(success)
   msg("wrote to ", file)
 
