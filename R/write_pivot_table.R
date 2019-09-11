@@ -21,11 +21,31 @@ write_pivot_table <- function (
     stop("overwrite = FALSE is not supported; stopping")
   }
 
+  tmpdir <- tempdir()
+  tmpfn <- file.path(tmpdir, file)
+
+  if (!dir.exists(dirname(tmpfn))) {
+    msg("creating dir: ", dirname(tmpfn))
+    dir.create(dirname(tmpfn), recursive = TRUE)
+  }
+
+  msg("writing to: ", tmpfn)
   htmlwidgets::saveWidget(
     object,
-    file,
+    file = tmpfn,
     selfcontained = selfcontained,
     ...)
+
+  if (!dir.exists(dirname(file))) {
+    msg("creating dir: ", dirname(file))
+    dir.create(dirname(file), recursive = TRUE)
+  }
+
+  success <-
+    file.copy(
+      dirname(tmpfn),
+      file.path(dirname(file), ".."),
+      recursive = TRUE)
 
   return(invisible(object))
 
