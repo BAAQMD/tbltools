@@ -17,24 +17,15 @@ write_pivot_table <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[write_pivot_table] ", ...)
 
-  tmpfn <- tempfile()
+  if (!isTRUE(overwrite)) {
+    stop("overwrite = FALSE is not supported; stopping")
+  }
 
   htmlwidgets::saveWidget(
     object,
-    tmpfn,
+    file,
     selfcontained = selfcontained,
     ...)
-
-  success <- file.copy(
-    from = tmpfn,
-    to = file,
-    overwrite = overwrite,
-    recursive = TRUE)
-
-  stopifnot(success)
-  msg("wrote to ", file)
-
-  file.remove(tmpfn)
 
   return(invisible(object))
 
