@@ -23,10 +23,15 @@ write_pivot_table <- function (
 
   tmpdir <- tempdir()
   tmpfn <- file.path(tmpdir, file)
+  tmpdn <- dirname(tmpfn)
 
-  if (!dir.exists(dirname(tmpfn))) {
-    msg("creating dir: ", dirname(tmpfn))
-    dir.create(dirname(tmpfn), recursive = TRUE)
+  if (!dir.exists(tmpdn)) {
+    msg("creating dir: ", tmpdn)
+    dir.create(tmpdn, recursive = TRUE)
+  } else {
+    # purge contents
+    tmpdn_contents <- dir(tmpdn, recursive = TRUE, full.names = TRUE)
+    file.remove(tmpdn_contents)
   }
 
   msg("writing to: ", tmpfn)
