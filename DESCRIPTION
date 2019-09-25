@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2019.09.17
+Version: 2019.09.25
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -8,7 +8,8 @@ Description: Provides a unified interface for efficiently reading and writing
     emissions-inventory work (the inventory package).
 Depends:
     R (>= 3.1.2),
-    strtools (>= 0.2.1),
+    strtools,
+    packtools,
     vartools,
     funtools,
     dplyr,
