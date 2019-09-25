@@ -4,7 +4,6 @@
 #' @param \dots key vars (like `fac_id`, `src_id`)
 #'
 #' @importFrom dplyr count slice
-#' @importFrom strtools pack_integers
 #'
 #' @export
 ensure_distinct <- function (input_data, ...) {
