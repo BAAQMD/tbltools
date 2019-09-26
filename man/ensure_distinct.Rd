@@ -9,7 +9,7 @@ ensure_distinct(input_data, ...)
 \arguments{
 \item{input_data}{data frame}
 
-\item{\dots}{key vars (like `fac_id`, `src_id`)}
+\item{\dots}{key vars (like \code{fac_id}, \code{src_id})}
 }
 \description{
 Ensure uniqueness of records

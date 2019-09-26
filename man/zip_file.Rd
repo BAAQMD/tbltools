@@ -18,7 +18,8 @@ zip_file(x, file, flags = "-q", clean = TRUE, ...)
 \item{...}{further arguments to \link{zip}}
 }
 \value{
-\code{file}, invisibly (for chaining)
+\preformatted{      \code{file}, invisibly (for chaining)
+}
 }
 \description{
 Write to ZIP file

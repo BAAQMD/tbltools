@@ -8,11 +8,11 @@ write_pivot_table(object, file, overwrite = TRUE, selfcontained = TRUE,
   ..., verbose = getOption("verbose"))
 }
 \arguments{
-\item{object}{created with `pivot_table()`}
+\item{object}{created with \code{pivot_table()}}
 
 \item{file}{(character) path on disk}
 
-\item{...}{further arguments to [htmlwidgets::saveWidget()]}
+\item{...}{further arguments to \code{\link[htmlwidgets:saveWidget]{htmlwidgets::saveWidget()}}}
 
 \item{verbose}{(logical)}
 }

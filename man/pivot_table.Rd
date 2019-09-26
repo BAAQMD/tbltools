@@ -13,23 +13,23 @@ pivot_table(input_data, rows, columns, values, aggregator = "Sum",
 \arguments{
 \item{rows}{(character) required (can be a single value or a vector)}
 
-\item{columns}{(character) looks for `year`}
+\item{columns}{(character) looks for \code{year}}
 
-\item{values}{(character) looks for `ems_qty` or `tput_qty`}
+\item{values}{(character) looks for \code{ems_qty} or \code{tput_qty}}
 
-\item{aggregator}{(character) passed to [rpivotTable::rpivotTable()]}
+\item{aggregator}{(character) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
-\item{renderer}{(character) passed to [rpivotTable::rpivotTable()]}
+\item{renderer}{(character) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
 \item{skip_years}{(optional) drop some years}
 
-\item{inclusions}{(list) passed to [rpivotTable::rpivotTable()]}
+\item{inclusions}{(list) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
-\item{menuLimit}{(integer) passed to [rpivotTable::rpivotTable()]}
+\item{menuLimit}{(integer) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
 \item{sorters}{(list) expert use only}
 
-\item{...}{further arguments to [rpivotTable::rpivotTable()]}
+\item{...}{further arguments to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
 \item{verbose}{(logical)}
 }
@@ -37,5 +37,7 @@ pivot_table(input_data, rows, columns, values, aggregator = "Sum",
 Create a pivot table that's tailored for tabular emission data.
 }
 \seealso{
-- `inventory` [conventions][inventory::conventions] for tabular data
+\itemize{
+\item \code{inventory} \link[inventory:conventions]{conventions} for tabular data
+}
 }

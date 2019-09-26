@@ -7,7 +7,7 @@
 expand_grid(..., stringsAsFactors = FALSE)
 }
 \description{
-Like `expand.grid` but treats `stringsAsFactors` as FALSE.
+Like \code{expand.grid} but treats \code{stringsAsFactors} as FALSE.
 }
 \examples{
 expand_grid(`Foo Bar` = 1:3, baz = "bap")

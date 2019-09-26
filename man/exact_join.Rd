@@ -12,16 +12,17 @@ exact_join(x, y, by = NULL, ..., fail_with = stop, convert = FALSE,
 
 \item{by}{a character vector of variables to join by}
 
-\item{...}{see `help(join, package = "dplyr")`}
+\item{...}{see \code{help(join, package = "dplyr")}}
 
-\item{convert}{passed to `dplyr::all_equal()`}
+\item{convert}{passed to \code{dplyr::all_equal()}}
 
 \item{verbose}{display messages}
 }
 \description{
 This function will complain if x and y cannot be "exactly" joined.
 This happens when there are either:
-
-- rows in `x` with no match in `y`; or
-- rows in `y` with no match in `x`
+\itemize{
+\item rows in \code{x} with no match in \code{y}; or
+\item rows in \code{y} with no match in \code{x}
+}
 }

@@ -10,7 +10,7 @@ extract_lookup_table(input_data, ..., na.rm = TRUE,
 \arguments{
 \item{input_data}{(tabular) containing 1+ "key vars" and exactly 1 "value var"}
 
-\item{...}{(vars) `key1, key2, key3, ..., value`}
+\item{...}{(vars) \code{key1, key2, key3, ..., value}}
 
 \item{na.rm}{(logical)}
 

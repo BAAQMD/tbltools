@@ -13,26 +13,27 @@ write_csv(input_data, file, signif = Inf, digits = 15, na = "",
 
 \item{file}{filename}
 
-\item{signif}{(optional) significant digits (default `Inf`)}
+\item{signif}{(optional) significant digits (default \code{Inf})}
 
-\item{digits}{(optional) passed to `format` if `signif` is not specified}
+\item{digits}{(optional) passed to \code{format} if \code{signif} is not specified}
 
 \item{na}{how to represent \code{NA} ("" means blank)}
 
 \item{...}{further arguments to \link{write.csv}}
 }
 \value{
-\code{input_data}, possibly modified. See Note for details.
+\preformatted{      \code{input_data}, possibly modified. See Note for details.
+}
 }
 \description{
 Write to a CSV file
 }
 \note{
 In contrast to \link{write.csv}, \code{row.names} is set to
-      \code{FALSE}, so that an extra column will not be written.
+\code{FALSE}, so that an extra column will not be written.
 
 If \code{signif} is supplied, then the values that are written will be rounded.
-      It is these rounded values that are returned (invisibly, for chaining).
+It is these rounded values that are returned (invisibly, for chaining).
 }
 \seealso{
 \link{read_tbl}
