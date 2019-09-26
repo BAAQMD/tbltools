@@ -12,6 +12,7 @@ Depends:
     packtools,
     vartools,
     funtools,
+    difftools,
     dplyr,
     lubridate,
     readr,
