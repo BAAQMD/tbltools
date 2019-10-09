@@ -18,7 +18,19 @@
 #' @seealso \link{read_tbl}
 #'
 #' @export
-write_csv <- function (input_data, file, signif = Inf, digits = 15, na = "", eol = "\r\n", row.names = FALSE, quote = TRUE, ..., verbose = getOption("verbose")) {
+write_csv <- function (
+  input_data,
+  file,
+  signif = Inf,
+  digits = 15,
+  date_format = "%Y-%m-%d",
+  na = "",
+  eol = "\r\n",
+  row.names = FALSE,
+  quote = TRUE,
+  ...,
+  verbose = getOption("verbose")
+) {
 
   file <- normalizePath(file, mustWork = FALSE)
 
@@ -30,9 +42,8 @@ write_csv <- function (input_data, file, signif = Inf, digits = 15, na = "", eol
     dir.create(dn, recursive = TRUE)
   }
 
-  # Intended to be an Excel-compatible date format.
   format_date <- function (x) {
-    base::format.Date(x, format = "%d-%b-%Y")
+    base::format.Date(x, format = date_format)
   }
 
   msg("stripping non-printable characters")

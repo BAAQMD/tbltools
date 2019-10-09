@@ -1,11 +1,15 @@
 test_csv_file <-
-  here::here("tests", "testthat", "random.csv")
+  here::here(
+    "tests",
+    "testthat",
+    "test_csv_file.csv")
 
 set.seed(0)
 
 test_csv_data <-
-  data_frame(
+  tibble(
     foo = "bar",
+    bar = as.Date("2019-10-09"),
     baz = as.numeric(1:3),
     bap = c(147, NA, 1 / 128))
 

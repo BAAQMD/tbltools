@@ -10,6 +10,18 @@ test_that("return value", {
 
 })
 
+test_that("date formatted as YYYY-mm-dd", {
+
+  second_line <-
+    readr::read_lines(tmpfn) %>%
+    .[2]
+
+  expect_match(
+    second_line,
+    "2019-10-09")
+
+})
+
 test_that("verbose", {
 
   expect_message(

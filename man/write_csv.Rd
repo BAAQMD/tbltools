@@ -4,8 +4,9 @@
 \alias{write_csv}
 \title{Write to a CSV file}
 \usage{
-write_csv(input_data, file, signif = Inf, digits = 15, na = "",
-  eol = "\\r\\n", row.names = FALSE, quote = TRUE, ...,
+write_csv(input_data, file, signif = Inf, digits = 15,
+  date_format = "\%Y-\%m-\%d", na = "", eol = "\\r\\n",
+  row.names = FALSE, quote = TRUE, ...,
   verbose = getOption("verbose"))
 }
 \arguments{
