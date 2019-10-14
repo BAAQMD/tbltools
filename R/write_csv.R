@@ -84,7 +84,8 @@ write_csv <- function (
     # mutate_if(Negate(is_numeric_or_decimal), str_quote) %>%
     mutate_if(lubridate::is.Date, format_date)
 
-  tidied %>% write.csv(
+  write.csv(
+    tidied,
     file = file,
     na = na,
     quote = quote,

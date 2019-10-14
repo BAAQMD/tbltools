@@ -54,16 +54,17 @@ test_that("finite signif read back", {
     read_back,
     tibble(
       foo = as.character("bar"),
+      bar = test_csv_data[["bar"]],
       baz = as.numeric(1:3),
       bap = c(147, NA, signif(1 / 128, 4))))
 
   csv_lines <- readLines(tmpfn)
   expect_equal(
     csv_lines,
-    c('"foo","baz","bap"',
-      '"bar",1,147',
-      '"bar",2,',
-      '"bar",3,0.007812')) # IEEE rules for rounding
+    c('"foo","bar","baz","bap"',
+      '"bar","2019-10-09",1,147',
+      '"bar","2019-10-09",2,',
+      '"bar","2019-10-09",3,0.007812')) # IEEE rules for rounding
 
 })
 
@@ -73,9 +74,18 @@ test_that("Inf signif read back", {
     write_csv(test_csv_data, tmpfn, verbose = TRUE, signif = Inf),
     "use `signif`")
 
+  csv_lines <- readLines(tmpfn)
+  expect_equal(
+    csv_lines,
+    c('"foo","bar","baz","bap"',
+      '"bar","2019-10-09","1","147"',
+      '"bar","2019-10-09","2",',
+      '"bar","2019-10-09","3","0.0078125"'))
+
   read_back <- read_csv(tmpfn)
   expected <- tibble(
     foo = as.character("bar"),
+    bar = test_csv_data[["bar"]],
     baz = as.numeric(1:3),
     bap = c(147, NA, 0.0078125))
 
@@ -83,34 +93,28 @@ test_that("Inf signif read back", {
     read_back,
     expected)
 
-  csv_lines <- readLines(tmpfn)
-  expect_equal(
-    csv_lines,
-    c('"foo","baz","bap"',
-      '"bar",1,"147"',
-      '"bar",2,',
-      '"bar",3,"0.0078125"'))
-
 })
 
 test_that("default signif", {
 
   options(digits = 5)
 
-  write_csv(test_csv_data, verbose = TRUE, tmpfn)
-  read_back <- read_csv(tmpfn)
-  expected <- tibble(
-    foo = as.character("bar"),
-    baz = as.numeric(1:3),
-    bap = c(147, NA, signif(1 / 128, getOption("digits"))))
-  expect_equal(read_back, expected)
+  write_csv(test_csv_data, tmpfn, verbose = TRUE)
 
   csv_lines <- readLines(tmpfn)
   expect_equal(
     csv_lines,
-    c('"foo","baz","bap"',
-      '"bar",1,"147"',
-      '"bar",2,',
-      '"bar",3,"0.0078125"'))
+    c('"foo","bar","baz","bap"',
+      '"bar","2019-10-09","1","147"',
+      '"bar","2019-10-09","2",',
+      '"bar","2019-10-09","3","0.0078125"'))
+
+  read_back <- read_csv(tmpfn)
+  expected <- tibble(
+    foo = as.character("bar"),
+    bar = test_csv_data[["bar"]],
+    baz = as.numeric(1:3),
+    bap = c(147, NA, signif(1 / 128, getOption("digits"))))
+  expect_equal(read_back, expected)
 
 })
