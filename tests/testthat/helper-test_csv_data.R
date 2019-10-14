@@ -2,7 +2,7 @@ test_csv_file <-
   here::here(
     "tests",
     "testthat",
-    "test_csv_file.csv")
+    "helper-test_csv_data.csv")
 
 set.seed(0)
 
