@@ -28,7 +28,6 @@ extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOp
   if (nrow(distinct_keys) < nrow(extracted)) {
     tallied <- count_(extracted, vars = key_vars)
     dupes <- filter(tallied, n > 1)
-    print(dupes)
     stop_msg <- str_c("duplicates detected")
     stop(stop_msg)
   }
