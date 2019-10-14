@@ -14,9 +14,9 @@ Hg_EFs_generic <-
 
 test_that("contrived", {
 
-  x <- data_frame(foo = "bar", baz = "A1")
-  y <- data_frame(baz = "AX", city = "Chicago")
+  x <- tibble(foo = "bar", baz = "A1")
+  y <- tibble(baz = "AX", city = "Chicago")
   joined <- wildcard_join(x, y, by = "baz", wildcard = "X", keep_pattern = FALSE)
-  expect_identical(joined, data_frame(foo = "bar", baz = "A1", city = "Chicago"))
+  expect_identical(joined, tibble(foo = "bar", baz = "A1", city = "Chicago"))
 
 })

@@ -1,10 +1,10 @@
 context("fun_join")
 
-df1 <- data_frame(
+df1 <- tibble(
   thing = c("mug", "plate", "plate", "donut", "donut"),
   owner = c("Alice", "Bob", "Chuck", "Alice", "Bob"))
 
-df2 <- data_frame(
+df2 <- tibble(
   thing = c("plate", "mug", "mug", "donut", "mug"),
   owner = c(NA, "Bob", "Alice", NA, "Chuck"),
   color = c("white", "red", "white", "brown", "white"))

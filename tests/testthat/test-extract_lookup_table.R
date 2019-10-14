@@ -20,7 +20,7 @@ test_that("success", {
   sliced <- slice(input_data, 1:3)
   extracted <- extract_lookup_table(sliced, fac_id, src_id, src_name)
 
-  expected <- data_frame(fac_id = 10L, src_id = 1:2L, src_name = c("foo", "bar"))
+  expected <- tibble(fac_id = 10L, src_id = 1:2L, src_name = c("foo", "bar"))
   expect_equal(extracted, expected)
 
 })

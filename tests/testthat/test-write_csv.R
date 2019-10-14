@@ -52,7 +52,7 @@ test_that("finite signif read back", {
 
   expect_equal(
     read_back,
-    data_frame(
+    tibble(
       foo = as.character("bar"),
       baz = as.numeric(1:3),
       bap = c(147, NA, signif(1 / 128, 4))))
@@ -74,7 +74,7 @@ test_that("Inf signif read back", {
     "use `signif`")
 
   read_back <- read_csv(tmpfn)
-  expected <- data_frame(
+  expected <- tibble(
     foo = as.character("bar"),
     baz = as.numeric(1:3),
     bap = c(147, NA, 0.0078125))
@@ -99,7 +99,7 @@ test_that("default signif", {
 
   write_csv(test_csv_data, verbose = TRUE, tmpfn)
   read_back <- read_csv(tmpfn)
-  expected <- data_frame(
+  expected <- tibble(
     foo = as.character("bar"),
     baz = as.numeric(1:3),
     bap = c(147, NA, signif(1 / 128, getOption("digits"))))
