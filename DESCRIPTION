@@ -17,7 +17,9 @@ Depends:
     lubridate,
     readr,
     readxl (>= 0.1.0.9000),
-    datapasta
+    datapasta,
+    data.table,
+    downloader
 Imports:
     fmatch
 Reverse-depends: inventory
