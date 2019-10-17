@@ -10,7 +10,7 @@ extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOp
 
   msg <- function (...) if(isTRUE(verbose)) message("[extract_lookup_table] ", ...)
 
-  extract_vars <- select_vars(names(input_data), ...)
+  extract_vars <- tidyselect::vars_select(names(input_data), ...)
   value_var <- last(extract_vars)
   key_vars <- setdiff(extract_vars, value_var)
   msg("building mapping from (", paste_csv(key_vars), ") to ", value_var)

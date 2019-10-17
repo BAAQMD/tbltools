@@ -54,7 +54,7 @@ pivot_table <- function (
     } else if ("tput_qty" %in% names(input_data)) {
       values <- "tput_qty"
     } else {
-      values <- first(select_vars(names(input_data), matches("_qty$")))
+      values <- first(tidyselect::vars_select(names(input_data), matches("_qty$")))
     }
   }
 

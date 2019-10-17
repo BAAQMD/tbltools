@@ -25,8 +25,8 @@ extract_tree <- function (input_data, form = "column_lineage", ...) {
 
   }
 
-  h_vars <- sort(select_vars(names(input_data), matches("(src|cat)_h[0-9]")))
-  id_vars <- select_vars(names(input_data), matches("(src|cat)_id"))
+  h_vars <- sort(tidyselect::vars_select(names(input_data), matches("(src|cat)_h[0-9]")))
+  id_vars <- tidyselect::vars_select(names(input_data), matches("(src|cat)_id"))
 
   parts <- input_data %>%
     select_(.dots = c(h_vars, id_vars)) %>%

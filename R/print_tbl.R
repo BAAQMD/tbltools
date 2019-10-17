@@ -34,7 +34,7 @@ print_tbl <- function (
 
   which_vars <- function (input_data, FUN) names(input_data)[which(sapply(input_data, FUN))]
 
-  id_vars <- select_vars(names(input_data), matches("_id$"))
+  id_vars <- tidyselect::vars_select(names(input_data), matches("_id$"))
   int_vars <- which_vars(input_data, is.integer) %>% union(intersect(names(input_data), "year"))
   num_vars <- which_vars(input_data, is.double) %>% setdiff(union(int_vars, id_vars))
 
