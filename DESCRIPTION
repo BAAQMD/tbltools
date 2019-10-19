@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2019.10.15
+Version: 2019.10.18
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -19,7 +19,8 @@ Depends:
     readxl (>= 0.1.0.9000),
     datapasta,
     data.table,
-    downloader
+    downloader,
+    rpivotTable
 Imports:
     fmatch
 Reverse-depends: inventory
