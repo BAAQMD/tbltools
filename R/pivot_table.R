@@ -1,12 +1,12 @@
-#' Create a pivot table
+#' pivot_table() and pivot_chart()
 #'
-#' Create a pivot table that's tailored for tabular emission data.
+#' Create an interactive pivot table (or chart). Tailored for emission-inventory data.
 #'
 #' @param rows (character) required (can be a single value or a vector)
 #' @param columns (character) looks for `year`
 #' @param values (character) looks for `ems_qty` or `tput_qty`
-#' @param aggregator (character) passed to [rpivotTable::rpivotTable()]
-#' @param renderer (character) passed to [rpivotTable::rpivotTable()]
+#' @param aggregator (character) passed to [rpivotTable()][rpivotTable::rpivotTable()]
+#' @param renderer (character) passed to [rpivotTable()][rpivotTable::rpivotTable()]
 #' @param skip_years (optional) drop some years
 #' @param inclusions (list) passed to [rpivotTable::rpivotTable()]
 #' @param menuLimit (integer) passed to [rpivotTable::rpivotTable()]
@@ -15,7 +15,9 @@
 #' @param verbose (logical)
 #'
 #' @seealso
-#' - `inventory` [conventions][inventory::conventions] for tabular data
+#' - `inventory` [conventions](https://paper.dropbox.com/doc/BY2015-Conventions--Anuj_YBX9ORYU6LdCnlzOo_TAg-lbtgRJluUoJdnflc2VyKx) for tabular data
+#' - the [rpivotTable](https://github.com/smartinsightsfromdata/rpivotTable/blob/master/README.md) R package
+#' - the Javascript [PivotTable.js](https://pivottable.js.org/examples/) library
 #'
 #' @export
 pivot_table <- function (
