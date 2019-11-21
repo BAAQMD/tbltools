@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2019.11.12
+Version: 2019.11.21
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -26,7 +26,7 @@ Imports:
 Reverse-depends: inventory
 License: MIT
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 Roxygen: list(markdown = TRUE)
 Suggests: testthat
 Collate: 
@@ -44,6 +44,7 @@ Collate:
     'print_tbl.R'
     'pull_distinct.R'
     'pull_summary.R'
+    'pull_total.R'
     'read_csv.R'
     'read_tbl.R'
     'read_xls.R'
