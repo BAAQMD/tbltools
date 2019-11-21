@@ -17,9 +17,6 @@ Depends:
     lubridate,
     readr,
     readxl (>= 0.1.0.9000),
-    datapasta,
-    data.table,
-    downloader,
     rpivotTable
 Imports:
     fmatch
@@ -28,7 +25,11 @@ License: MIT
 LazyData: true
 RoxygenNote: 7.0.0
 Roxygen: list(markdown = TRUE)
-Suggests: testthat
+Suggests: 
+    testthat,
+    data.table,
+    datapasta,
+    downloader
 Collate: 
     'count_distinct.R'
     'ensure_distinct.R'
