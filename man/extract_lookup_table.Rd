@@ -4,13 +4,17 @@
 \alias{extract_lookup_table}
 \title{Extract a lookup table from tabular data}
 \usage{
-extract_lookup_table(input_data, ..., na.rm = TRUE,
-  verbose = getOption("verbose"))
+extract_lookup_table(
+  input_data,
+  ...,
+  na.rm = TRUE,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{input_data}{(tabular) containing 1+ "key vars" and exactly 1 "value var"}
 
-\item{...}{(vars) \code{key1, key2, key3, ..., value}}
+\item{...}{(vars) \verb{key1, key2, key3, ..., value}}
 
 \item{na.rm}{(logical)}
 

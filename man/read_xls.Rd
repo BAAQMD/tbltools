@@ -4,8 +4,13 @@
 \alias{read_xls}
 \title{Read a worksheet from an XLS or XLSX file}
 \usage{
-read_xls(file, expect_md5 = NULL, sheet = 1, ...,
-  verbose = getOption("verbose"))
+read_xls(
+  file,
+  expect_md5 = NULL,
+  sheet = 1,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{file}{filename}

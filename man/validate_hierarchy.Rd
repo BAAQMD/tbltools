@@ -4,8 +4,12 @@
 \alias{validate_hierarchy}
 \title{validate_hierarchy}
 \usage{
-validate_hierarchy(input_data, id_var = NULL, ...,
-  verbose = getOption("verbose"))
+validate_hierarchy(
+  input_data,
+  id_var = NULL,
+  ...,
+  verbose = getOption("verbose")
+)
 }
 \description{
 Validates an imported or existing hierarchy.

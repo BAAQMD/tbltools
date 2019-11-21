@@ -4,8 +4,15 @@
 \alias{exact_join}
 \title{Join two tbls together}
 \usage{
-exact_join(x, y, by = NULL, ..., fail_with = stop, convert = FALSE,
-  verbose = TRUE)
+exact_join(
+  x,
+  y,
+  by = NULL,
+  ...,
+  fail_with = stop,
+  convert = FALSE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{x, }{y tbls to join}

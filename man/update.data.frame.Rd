@@ -4,8 +4,7 @@
 \alias{update.data.frame}
 \title{update.data.frame}
 \usage{
-\method{update}{data.frame}(input_data, .where, ...,
-  verbose = getOption("verbose"))
+\method{update}{data.frame}(input_data, .where, ..., verbose = getOption("verbose"))
 }
 \description{
 Analogous to SQL UPDATE command

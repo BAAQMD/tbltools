@@ -5,14 +5,24 @@
 \alias{pivot_chart}
 \title{pivot_table() and pivot_chart()}
 \usage{
-pivot_table(input_data, rows, columns, values, aggregator = "Sum",
-  renderer = "Heatmap", skip_years, inclusions = list(),
-  menuLimit = 6000, file = NULL, sorters = list(pol_abbr = c("PM",
-  "PM2.5", "PM10", "TOG", "ROG", "NOx", "SO2", "CO", "CO2", "CH4", "N2O",
-  "HFC+PFC", "NH3")), ..., verbose = getOption("verbose"))
+pivot_table(
+  input_data,
+  rows,
+  columns,
+  values,
+  aggregator = "Sum",
+  renderer = "Heatmap",
+  skip_years,
+  inclusions = list(),
+  menuLimit = 6000,
+  file = NULL,
+  sorters = list(pol_abbr = c("PM", "PM2.5", "PM10", "TOG", "ROG", "NOx", "SO2", "CO",
+    "CO2", "CH4", "N2O", "HFC+PFC", "NH3")),
+  ...,
+  verbose = getOption("verbose")
+)
 
-pivot_chart(..., renderer = "Area Chart",
-  verbose = getOption("verbose"))
+pivot_chart(..., renderer = "Area Chart", verbose = getOption("verbose"))
 }
 \arguments{
 \item{rows}{(character) required (can be a single value or a vector)}

@@ -4,13 +4,19 @@
 \alias{with_hierarchy}
 \title{Annotate tabular data with hierarchical headings}
 \usage{
-with_hierarchy(input_data, using = NULL, depth = NULL, ...,
-  warn_missing = FALSE, verbose = getOption("verbose"))
+with_hierarchy(
+  input_data,
+  using = NULL,
+  depth = NULL,
+  ...,
+  warn_missing = FALSE,
+  verbose = getOption("verbose")
+)
 }
 \arguments{
 \item{input_data}{tabular data}
 
-\item{using}{tabular data, OR the name of a \code{.CSV} file found in \code{BY2015/Hierarchies/}.}
+\item{using}{tabular data, OR the name of a \code{.CSV} file found in \verb{BY2015/Hierarchies/}.}
 
 \item{depth}{(integer) use at most this many levels}
 
