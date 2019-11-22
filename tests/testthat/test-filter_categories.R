@@ -42,10 +42,10 @@ test_that("named categories", {
   expected <-
     enframe(
       test_categories,
-      name = "cat_abbr",
+      name = "category",
       value = "cat_id") %>%
     mutate_at(
-      vars(cat_abbr),
+      vars(category),
       ~ factor(., levels = names(test_categories))) %>%
     mutate(
       cat_h0 = "Area")

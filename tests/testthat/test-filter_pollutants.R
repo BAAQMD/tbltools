@@ -53,7 +53,9 @@ test_that("pollutant abbreviations", {
     filter(
       pol_abbr %in% c("TOG", "PM", "NOx")) %>%
     mutate(
-      pol_abbr = factor(pol_abbr, levels = c("TOG", "PM", "NOx")))
+      pollutant = factor(
+        pol_abbr,
+        levels = c("TOG", "PM", "NOx")))
 
   test_data %>%
     filter_pollutants(
@@ -82,7 +84,9 @@ test_that("named pollutant ids (TOG, PM, NOx)", {
     filter(
       pol_abbr %in% c("TOG", "PM", "NOx")) %>%
     mutate(
-      pol_abbr = factor(pol_abbr, levels = c("TOG", "PM", "NOx")))
+      pollutant = factor(
+        pol_abbr,
+        levels = c("TOG", "PM", "NOx")))
 
   test_data %>%
     filter_pollutants(
@@ -111,7 +115,7 @@ test_that("named pollutant ids (BTEX)", {
     filter(
       pol_id %in% BTEX_POLLUTANTS) %>%
     mutate(
-      pol_abbr = pol_id %>%
+      pollutant = pol_id %>%
         codec::decode(BTEX_POLLUTANTS) %>%
         factor(., levels = names(BTEX_POLLUTANTS)))
 
@@ -119,7 +123,7 @@ test_that("named pollutant ids (BTEX)", {
     filter_pollutants(
       BTEX_POLLUTANTS) %>%
     mutate(
-      pol_abbr = pol_id %>%
+      pollutant = pol_id %>%
         codec::decode(BTEX_POLLUTANTS) %>%
         factor(., levels = names(BTEX_POLLUTANTS))) %>%
     expect_equal(
