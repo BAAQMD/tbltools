@@ -128,7 +128,7 @@ with_hierarchy <- function (
   # Trim and coerce colums to integer/character, and sort by id_var
   tidied_hierarchy <-
     hierarchy_object %>%
-    select(
+    dplyr::select(
       id_var,
       h_vars) %>%
     mutate_at(

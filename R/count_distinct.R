@@ -1,4 +1,4 @@
 #' @export
 count_distinct <- function (...) {
-  nrow(distinct(select(...)))
+  nrow(distinct(dplyr::select(...)))
 }

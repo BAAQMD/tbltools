@@ -33,7 +33,7 @@ extract_tree <- function (input_data, form = "column_lineage", ...) {
     as.list() %>% lapply(as.character)
 
   root <- data_frame(parent = NA_character_, label = "Bay Area", uid = md5(""), depth = 1, round = 0)
-  reduced <- Reduce(graft, parts, init = root) %>% filter(label != "") %>% select(-round)
+  reduced <- Reduce(graft, parts, init = root) %>% filter(label != "") %>% dplyr::select(-round)
 
   encode_uids <- . %>% factor(levels = unique(reduced$uid)) %>% as.integer
   reduced %>% rename(node = uid) %>% distinct() %>% mutate_at(vars(node, parent), funs(encode_uids))

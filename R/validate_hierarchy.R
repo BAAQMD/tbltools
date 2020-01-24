@@ -95,7 +95,7 @@ validate_hierarchy <- function (
 
   validated_hierarchy <-
     input_data %>%
-    select(
+    dplyr::select(
       id_var,
       !!sorted_h_vars)
 

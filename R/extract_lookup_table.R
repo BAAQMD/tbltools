@@ -15,7 +15,7 @@ extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOp
   key_vars <- setdiff(extract_vars, value_var)
   msg("building mapping from (", paste_csv(key_vars), ") to ", value_var)
 
-  extracted <- distinct(select(input_data, key_vars, value_var))
+  extracted <- distinct(dplyr::select(input_data, key_vars, value_var))
 
   if (isTRUE(na.rm)) {
     msg("dropping rows where ", value_var, " is NA")
@@ -23,7 +23,7 @@ extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOp
   }
 
   msg("checking for duplicates")
-  distinct_keys <- distinct(select(extracted, key_vars))
+  distinct_keys <- distinct(dplyr::select(extracted, key_vars))
 
   if (nrow(distinct_keys) < nrow(extracted)) {
     tallied <- count_(extracted, vars = key_vars)

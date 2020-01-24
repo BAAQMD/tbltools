@@ -22,6 +22,6 @@ wildcard_join <- function (x, y, by, wildcard = "X", keep_pattern = FALSE, ...) 
     match_data[[str_c(by, "_pattern")]] <- match_data[[by]]
   }
 
-  bind_cols(x, select(match_data, -one_of(by)))
+  bind_cols(x, dplyr::select(match_data, -one_of(by)))
 
 }

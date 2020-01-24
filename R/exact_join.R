@@ -33,8 +33,8 @@ exact_join <- function (
     msg("by is: ", str_csv(by))
   }
 
-  left_keys <- distinct(select(x, !!by))
-  right_keys <- distinct(select(y, !!by))
+  left_keys <- distinct(dplyr::select(x, !!by))
+  right_keys <- distinct(dplyr::select(y, !!by))
 
   is_exact <-
     dplyr::all_equal(
