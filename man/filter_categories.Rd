@@ -11,6 +11,13 @@ filter_categories(
   verbose = getOption("verbose")
 )
 }
+\arguments{
+\item{input_data}{(tabular data)}
+
+\item{...}{either an (optionally named) vector or list of category IDs, \emph{or} a tabular dataset having a column \code{cat_id}.}
+
+\item{.name}{if the dot-args (above) are named, then the names will be used to populate a column in the result. \code{.name} will be that column's name.}
+}
 \description{
 Filter by category, and (optionally) create custom labels at the same time.
 }
@@ -24,8 +31,8 @@ RESIDENTIAL_NG_COMBUSTION_CATEGORIES <- c(
   "Water Heating" = 284,
   "Cooking" = 285)
 
-# `filter_categories()` both filters the data, and assigns names to `cat_abbr`.
+# `filter_categories()` both filters the data, and assigns names to `category` (by default; use the `.name` argument to change it).
 residential_NG_data <- BY2011::BY2011_annual_emission_data \%>\% filter_categories(RESIDENTIAL_NG_COMBUSTION_CATEGORIES)
-residential_NG_data \%>\% tabulate_emissions_by(cat_abbr, cat_id, year)
+residential_NG_data \%>\% tabulate_emissions_by(category, cat_id, year)
 
 }

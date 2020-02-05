@@ -2,6 +2,10 @@
 #'
 #' Filter by category, and (optionally) create custom labels at the same time.
 #'
+#' @param input_data (tabular data)
+#' @param ... either an (optionally named) vector or list of category IDs, *or* a tabular dataset having a column `cat_id`.
+#' @param .name if the dot-args (above) are named, then the names will be used to populate a column in the result. `.name` will be that column's name.
+#'
 #' @examples
 #' # Here are some emissions we'd like to filter AND label.
 #' DB_data <- RY(2011:2012) %>% point_source_emissions()
@@ -12,9 +16,9 @@
 #'   "Water Heating" = 284,
 #'   "Cooking" = 285)
 #'
-#' # `filter_categories()` both filters the data, and assigns names to `cat_abbr`.
+#' # `filter_categories()` both filters the data, and assigns names to `category` (by default; use the `.name` argument to change it).
 #' residential_NG_data <- BY2011::BY2011_annual_emission_data %>% filter_categories(RESIDENTIAL_NG_COMBUSTION_CATEGORIES)
-#' residential_NG_data %>% tabulate_emissions_by(cat_abbr, cat_id, year)
+#' residential_NG_data %>% tabulate_emissions_by(category, cat_id, year)
 #'
 #' @export
 filter_categories <- function (
@@ -24,8 +28,14 @@ filter_categories <- function (
   verbose = getOption("verbose")
 ) {
 
-  categories <-
-    packtools::unpack_args(...)
+  if (inherits(first(list(...)), "data.frame")) {
+    categories <-
+      pull_distinct(first(list(...)), cat_id)
+  } else {
+    categories <-
+      packtools::unpack_args(
+        ...)
+  }
 
   stopifnot(
     is.list(categories)
@@ -69,9 +79,9 @@ filter_categories <- function (
 
     err_msg <-
       str_c(
-      "[filter_pollutants] ",
-      "don't know how to handle a categories of class ",
-      class(categories))
+        "[filter_pollutants] ",
+        "don't know how to handle a categories of class ",
+        class(categories))
 
     stop(err_msg)
 

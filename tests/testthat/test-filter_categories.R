@@ -69,3 +69,23 @@ test_that("named categories", {
       expected)
 
 })
+
+test_that("data frame (as set)", {
+
+  whitelist_set <-
+    tibble(
+      cat_id = 283:284)
+
+  expected <-
+    test_data %>%
+    semi_join(
+      whitelist_set,
+      by = "cat_id")
+
+  test_data %>%
+    filter_categories(
+      whitelist_set) %>%
+    expect_equal(
+      expected)
+
+})
