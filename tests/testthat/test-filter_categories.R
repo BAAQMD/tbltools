@@ -70,6 +70,30 @@ test_that("named categories", {
 
 })
 
+test_that("named categories, with duplicates (fct_collapse)", {
+
+  test_categories <-
+    list(
+      "Oranges" = c(1, 4),
+      "Apples" = 3,
+      "Pears" = 2)
+
+  expected_data <-
+    tibble(
+      cat_id = 1:4L,
+      cat_h0 = "Area",
+      category = factor(
+        c("Oranges", "Pears", "Apples", "Oranges"),
+        levels = c("Oranges", "Apples", "Pears")))
+
+  test_data %>%
+    filter_categories(
+      test_categories) %>%
+    expect_equal(
+      expected_data)
+
+})
+
 test_that("data frame (as set)", {
 
   whitelist_set <-

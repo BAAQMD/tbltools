@@ -55,11 +55,12 @@ filter_categories <- function (
         input_data,
         cat_id %in% unpacked_ids)
 
-    mutated <- mutate(
-      filtered,
-      !!.name := factor(
-        decode(cat_id, unpacked_codec),
-        levels = names(unpacked_codec))) # force subsequent ordering
+    mutated <-
+      mutate(
+        filtered,
+        !!.name := factor(
+          decode(cat_id, unpacked_codec),
+          levels = unique(names(unpacked_codec)))) # force subsequent ordering
 
     return(mutated)
 
