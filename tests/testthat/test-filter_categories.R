@@ -70,7 +70,7 @@ test_that("named categories", {
 
 })
 
-test_that("named categories, with duplicates (fct_collapse)", {
+test_that("named categories, with duplicates (like fct_collapse)", {
 
   test_categories <-
     list(
