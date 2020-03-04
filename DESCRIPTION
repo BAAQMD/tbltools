@@ -32,6 +32,7 @@ Suggests:
     datapasta,
     downloader
 Collate: 
+    'bind_inventories.R'
     'count_distinct.R'
     'ensure_distinct.R'
     'exact_join.R'
