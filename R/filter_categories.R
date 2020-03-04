@@ -66,7 +66,7 @@ filter_categories <- function (
 
   }
 
-  if (inherits(categories, c("numeric", "character"))) {
+  if (inherits(categories, c("integer", "numeric", "character"))) {
 
     # if `categories` is numeric or character, then filter on `cat_id`
     filtered <-
@@ -74,7 +74,14 @@ filter_categories <- function (
         input_data,
         cat_id %in% categories)
 
-    return(filtered)
+    mutated <-
+      mutate(
+        filtered,
+        !!.name := factor(
+          str_c("#", cat_id),
+          levels = str_c("#", unique(categories)))) # force subsequent ordering
+
+    return(mutated)
 
   } else {
 

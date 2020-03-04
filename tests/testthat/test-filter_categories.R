@@ -10,7 +10,11 @@ test_that("unnamed categories", {
   expected <-
     test_data %>%
     filter(
-      cat_id %in% c(283:285))
+      cat_id %in% c(283:285)) %>%
+    mutate(
+      category = factor(
+        str_c("#", cat_id),
+        levels = c("#283", "#284", "#285")))
 
   test_data %>%
     filter_categories(
@@ -104,7 +108,10 @@ test_that("data frame (as set)", {
     test_data %>%
     semi_join(
       whitelist_set,
-      by = "cat_id")
+      by = "cat_id") %>%
+    mutate(
+      category = as.factor(
+        str_c("#", cat_id)))
 
   test_data %>%
     filter_categories(
