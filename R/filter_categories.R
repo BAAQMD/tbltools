@@ -66,9 +66,9 @@ filter_categories <- function (
 
   }
 
-  if (is.numeric(categories)) {
+  if (inherits(categories, c("numeric", "character"))) {
 
-    # if `categories` is numeric, then filter on `cat_id`
+    # if `categories` is numeric or character, then filter on `cat_id`
     filtered <-
       filter(
         input_data,
@@ -80,7 +80,7 @@ filter_categories <- function (
 
     err_msg <-
       str_c(
-        "[filter_pollutants] ",
+        "[filter_categories] ",
         "don't know how to handle a categories of class ",
         class(categories))
 
