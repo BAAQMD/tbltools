@@ -27,7 +27,7 @@ LazyData: true
 RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat,
+    testthat (>= 2.1.0),
     data.table,
     datapasta,
     downloader
