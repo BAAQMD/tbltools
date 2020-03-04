@@ -18,6 +18,50 @@ bind_inventories <- function (
   data_list <-
     list(...)
 
+  #
+  # Check that all arguments in `...` are named.
+  #
+
+  if (is.null(names(data_list))) {
+
+    #
+    # TODO: support extraction of patterns like "BY[0-9]{4}_", "BY_", "RY_",
+    # etc. from the dot-arg symbols (e.g. `BY2011_annual_emission_data").
+    #
+    err_msg <- "all arguments must be named."
+    stop(err_msg)
+
+  }
+
+  #
+  # Check that all inventories in `...` have the same `ems_unit`.
+  #
+
+  ems_unit_values <-
+    map(
+      data_list,
+      ~ pull(., ems_unit)) %>%
+    unlist()
+
+  msg("ems_unit is: ", strtools::str_csv(ems_unit_values))
+
+  if (!all_same(ems_unit_values)) {
+
+    err_msg <- paste0(
+      "inventories must have same `ems_unit`. ",
+      "Try using convert_emission_units() first?")
+
+    stop(err_msg)
+
+  }
+
+  #
+  # If `cat_id` is of type "character" for any inventory (e.g. BY2008),
+  # then for each inventory, coerce `cat_id` to character as well.
+  #
+  # Otherwise, `bind_rows()` would throw an error. It's type-sensitive.
+  #
+
   cat_id_classes <-
     map(
       data_list,
@@ -38,25 +82,20 @@ bind_inventories <- function (
 
   }
 
+  #
+  # Stack the inventories together.
+  #
+  # Then, make the `inventory` column into a factor. Its levels should be in the
+  # order that the names of `...` were provided.
+  #
+
   stacked_data <-
     bind_rows(
       data_list,
-      .id = .id)
-
-  ems_unit_values <-
-    pull_distinct(
-      stacked_data,
-      ems_unit)
-
-  if (!all_same(ems_unit_values)) {
-
-    err_msg <- paste0(
-      "inventories must have same `ems_unit`. ",
-      "Use convert_emission_units() first.")
-
-    stop(err_msg)
-
-  }
+      .id = .id) %>%
+    mutate_at(
+      vars(.id),
+      ~ factor(., levels = names(data_list)))
 
   return(stacked_data)
 
