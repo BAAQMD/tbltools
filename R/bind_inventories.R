@@ -6,6 +6,7 @@
 #' @param .id you can override this
 #' @param verbose display messages
 #'
+#' @export
 bind_inventories <- function (
   ...,
   .id = "inventory",

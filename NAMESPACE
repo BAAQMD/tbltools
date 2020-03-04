@@ -3,6 +3,7 @@
 S3method(patch,data.frame)
 S3method(update,data.frame)
 S3method(update,list)
+export(bind_inventories)
 export(count_distinct)
 export(ensure_distinct)
 export(exact_join)
