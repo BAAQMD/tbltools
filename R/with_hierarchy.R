@@ -91,9 +91,9 @@ with_hierarchy <- function (
 
   # Auto-detect id_var
   id_var <-
-    vartools::find_var(
+    vartools::find_id_var(
       hierarchy_object,
-      suffix = "_id")
+      verbose = verbose)
 
   # Check for (reasonably anticipated) issues
   hierarchy_object <-

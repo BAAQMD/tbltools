@@ -20,9 +20,9 @@ validate_hierarchy <- function (
 
   if (is.null(id_var)) {
     id_var <-
-      vartools::find_var(
+      vartools::find_id_var(
         input_data,
-        suffix = "_id")
+        verbose = verbose)
   }
 
   msg("id_var is: ", id_var)
