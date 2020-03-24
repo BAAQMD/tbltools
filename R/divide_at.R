@@ -2,13 +2,12 @@
 
 #' divide_at
 #'
-#' @rdname multiply_at
+#' @name multiply_at
 #'
 #' @examples
 #' mtcars %>% divide_at(vars(everything), cyl)  # "normalizes" by `cyl`
 #'
 #' @export
-
 divide_at <- function (
   .tbl,
   .vars,
@@ -17,7 +16,10 @@ divide_at <- function (
   .cols = NULL
 ) {
 
-  .by <- expr(1 / {{ by }})
+  #
+  # Gray magic ("nonstandard evaluation").
+  #
+  .by <- rlang::expr(1 / {{ by }})
 
   divided <-
     multiply_at(
