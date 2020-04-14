@@ -68,7 +68,6 @@ Collate:
     'update.list.R'
     'validate_hierarchy.R'
     'wildcard_join.R'
-    'with_column_sums.R'
     'with_comment.R'
     'with_hierarchy.R'
     'write_csv.R'
