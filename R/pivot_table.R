@@ -9,6 +9,7 @@
 #' @param renderer (character) passed to [rpivotTable()][rpivotTable::rpivotTable()]
 #' @param skip_years (optional) drop some years
 #' @param inclusions (list) passed to [rpivotTable::rpivotTable()]
+#' @param subtotals (logical) passed to [rpivotTable::rpivotTable()]
 #' @param menuLimit (integer) passed to [rpivotTable::rpivotTable()]
 #' @param sorters (list) expert use only
 #' @param ... further arguments to [rpivotTable::rpivotTable()]
@@ -29,6 +30,7 @@ pivot_table <- function (
   renderer = "Heatmap",
   skip_years,
   inclusions = list(),
+  subtotals = FALSE,
   menuLimit = 6000,
   file = NULL,
   sorters = list(pol_abbr = c("PM", "PM2.5", "PM10", "TOG", "ROG", "NOx", "SO2", "CO", "CO2", "CH4", "N2O", "HFC+PFC", "NH3")),
@@ -87,6 +89,17 @@ pivot_table <- function (
     stop("Don't know how to handle multiple sorters yet, sorry")
   }
 
+  if (isTRUE(subtotals)) {
+    if (renderer == "Heatmap") {
+      renderer <- "Table With Subtotal Heatmap"
+    } else if (renderer == "Table") {
+      renderer <- "Table With Subtotal"
+    } else {
+      msg("expecting a With Subtotal renderer; proceeding anyway")
+      # pass
+    }
+  }
+
   pivot_args <- list(
     rows = rows,
     cols = columns,
@@ -94,13 +107,18 @@ pivot_table <- function (
     aggregatorName = aggregator,
     rendererName = renderer,
     inclusions = inclusions,
+    subtotals = subtotals,
     autoSortUnusedAttrs = TRUE,
     menuLimit = menuLimit,
     sorters = sorter_js,
     ...)
 
   pivot_obj <-
-    do.call(rpivotTable, append(list(data = input_data), pivot_args))
+    do.call(
+      rpivotTable,
+      append(
+        list(data = input_data),
+        pivot_args))
 
   if (!is.null(file)) {
     require(htmlwidgets)

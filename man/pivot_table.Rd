@@ -14,6 +14,7 @@ pivot_table(
   renderer = "Heatmap",
   skip_years,
   inclusions = list(),
+  subtotals = FALSE,
   menuLimit = 6000,
   file = NULL,
   sorters = list(pol_abbr = c("PM", "PM2.5", "PM10", "TOG", "ROG", "NOx", "SO2", "CO",
@@ -38,6 +39,8 @@ pivot_chart(..., renderer = "Area Chart", verbose = getOption("verbose"))
 \item{skip_years}{(optional) drop some years}
 
 \item{inclusions}{(list) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
+
+\item{subtotals}{(logical) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
 \item{menuLimit}{(integer) passed to \code{\link[rpivotTable:rpivotTable]{rpivotTable::rpivotTable()}}}
 
