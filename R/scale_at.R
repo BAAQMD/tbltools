@@ -1,9 +1,7 @@
-#' @rdname scale_at
+#' Rescale columns of tabular data
 #'
-#' @name scale_at
-#' @title Rescale columns of tabular data
+#' @description Rescale columns (of tabular data) by some value or expression.
 #'
-#' @description
 #'   `multiply_at()` and `divide_at()` avoid one of the pitfalls of
 #'   `mutate_at()`, which is that `mutate_at()` applies transformations
 #'   sequentially, rather than in parallel. See Details, below.
@@ -31,8 +29,7 @@
 #' @param by a value or expression, to be evaluated within `.tbl`
 #'
 #' @examples
-#' mtcars %>% multiply_at(vars(everything), 2)  # double every value
-#' mtcars %>% divide_at(vars(mpg, cyl), mpg)    # divide `mpg` and `cyl` by `mpg`
+#' mtcars %>% multiply_at(vars(everything), 2)  # doubles every value
 #'
 NULL
 
@@ -43,8 +40,15 @@ scale_at <- function (
   by,
   operator,
   ...,
-  .cols = NULL
+  .cols = NULL,
+  verbose = getOption("verbose")
 ) {
+
+  msg <- function (...) if(isTRUE(verbose)) message("[multiply_at] ", ...)
+
+  if (isTRUE(verbose)) {
+    glimpse(.tbl)
+  }
 
   # Capture for non-standard evaluation
   .by <- enquo(by)
@@ -53,44 +57,35 @@ scale_at <- function (
   tmpvar <- "foo" # digest::digest(rnorm(1))
 
   # Create temporary column
-  mutated_data <-
+  mutated <-
     mutate(
       .tbl,
       !!tmpvar := !!.by)
 
+  if (isTRUE(verbose)) {
+    glimpse(mutated)
+  }
+
   # Scale `.vars` by temporary column
-  scaled_data <-
+  multiplied <-
     mutate_at(
-      mutated_data,
+      mutated,
       .vars,
       .funs = ~ operator(., get(tmpvar)),
       ...,
       .cols = .cols)
 
-  # Finally, drop the temporary column
-  tidied_data <-
+  # Drop temporary column
+  tidied <-
     select(
-      scaled_data,
+      multiplied,
       -matches(tmpvar))
 
-  return(tidied_data)
+  return(tidied)
 
 }
 
-#' multiply_at
-#'
-#' @describeIn scale_at multiplication
-#' @export
 multiply_at <-
   purrr::partial(
     scale_at,
     operator = `*`)
-
-#' divide_at
-#'
-#' @describeIn scale_at division
-#' @export
-divide_at <-
-  purrr::partial(
-    scale_at,
-    operator = `/`)

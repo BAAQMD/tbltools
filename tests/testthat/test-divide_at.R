@@ -29,3 +29,20 @@ test_that("everything, variable in data", {
     mutate_at(mtcars, vars(everything()), ~ . / x))
 
 })
+
+test_that("grouped data", {
+
+  x <- pull(billboard, wk1)
+
+  # expected result doesn't actually depend on grouping
+  expected <-
+    mutate_at(billboard, vars(wk1, wk2), ~ . / x)
+
+  grouped_data <-
+    group_by(billboard, artist)
+
+  expect_equal(
+    divide_at(grouped_data, c('wk1', 'wk2'), wk1),
+    expected)
+
+})
