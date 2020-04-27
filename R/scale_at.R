@@ -1,7 +1,9 @@
-#' Rescale columns of tabular data
+#' @rdname scale_at
 #'
-#' @description Rescale columns (of tabular data) by some value or expression.
+#' @name scale_at
+#' @title Rescale columns of tabular data
 #'
+#' @description
 #'   `multiply_at()` and `divide_at()` avoid one of the pitfalls of
 #'   `mutate_at()`, which is that `mutate_at()` applies transformations
 #'   sequentially, rather than in parallel. See Details, below.
@@ -29,13 +31,17 @@
 #' @param by a value or expression, to be evaluated within `.tbl`
 #'
 #' @examples
-#' mtcars %>% multiply_at(vars(everything), 2)  # doubles every value
+#' mtcars %>% multiply_at(vars(everything), 2)  # double every value
+#' mtcars %>% divide_at(vars(mpg, cyl), mpg)    # divide `mpg` and `cyl` by `mpg`
 #'
+NULL
+
 #' @export
-multiply_at <- function (
+scale_at <- function (
   .tbl,
   .vars,
   by,
+  operator,
   ...,
   .cols = NULL
 ) {
@@ -44,31 +50,47 @@ multiply_at <- function (
   .by <- enquo(by)
 
   # Random string to use as a temporary column within `.tbl`
-  tmpvar <- digest::digest(rnorm(1))
+  tmpvar <- "foo" # digest::digest(rnorm(1))
 
   # Create temporary column
-  mutated <-
+  mutated_data <-
     mutate(
       .tbl,
       !!tmpvar := !!.by)
 
   # Scale `.vars` by temporary column
-  multiplied <-
+  scaled_data <-
     mutate_at(
-      mutated,
+      mutated_data,
       .vars,
-      .funs = ~ . * mutated[[tmpvar]],
+      .funs = ~ operator(., get(tmpvar)),
       ...,
       .cols = .cols)
 
-  # Drop temporary column
-  tidied <-
+  # Finally, drop the temporary column
+  tidied_data <-
     select(
-      multiplied,
+      scaled_data,
       -matches(tmpvar))
 
-  return(tidied)
+  return(tidied_data)
 
 }
 
+#' multiply_at
+#'
+#' @describeIn scale_at multiplication
+#' @export
+multiply_at <-
+  purrr::partial(
+    scale_at,
+    operator = `*`)
 
+#' divide_at
+#'
+#' @describeIn scale_at division
+#' @export
+divide_at <-
+  purrr::partial(
+    scale_at,
+    operator = `/`)
