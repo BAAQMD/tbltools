@@ -46,7 +46,6 @@ Collate:
     'filter_years.R'
     'fun_join.R'
     'import_hierarchy.R'
-    'multiply_at.R'
     'paste_csv.R'
     'patch.R'
     'pivot_table.R'
