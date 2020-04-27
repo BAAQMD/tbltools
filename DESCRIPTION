@@ -30,6 +30,7 @@ Suggests:
     testthat (>= 2.1.0),
     data.table,
     datapasta,
+    tidyverse,
     downloader
 Collate: 
     'bind_inventories.R'
