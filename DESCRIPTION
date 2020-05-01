@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2020.04.27
+Version: 2020.05.01
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -56,6 +56,7 @@ Collate:
     'pull_summary.R'
     'pull_total.R'
     'read_csv.R'
+    'read_fst.R'
     'read_tbl.R'
     'read_xls.R'
     'reverse_lookup.R'
