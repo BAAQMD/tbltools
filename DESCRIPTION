@@ -66,6 +66,7 @@ Collate:
     'select_distinct.R'
     'show_duplicates.R'
     'sort_by.R'
+    'sum_across.R'
     'update.data.frame.R'
     'update.list.R'
     'validate_hierarchy.R'
