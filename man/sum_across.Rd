@@ -15,3 +15,6 @@ sum_across(x, ..., na.rm = TRUE, .groups = "drop")
 \description{
 sum_across
 }
+\note{
+May not work for list-columns. See TODO inside function.
+}
