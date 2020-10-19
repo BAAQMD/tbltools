@@ -64,6 +64,8 @@ Collate:
     'rolling_join.R'
     'scale_at.R'
     'select_distinct.R'
+    'select_first.R'
+    'select_last.R'
     'show_duplicates.R'
     'sort_by.R'
     'sum_across.R'
