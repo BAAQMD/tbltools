@@ -29,19 +29,19 @@ test_that("unnamed pollutant ids", {
   test_data %>%
     filter_pollutants(
       c(990, 1990, 2990)) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       990, 1990, 2990) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       c(990, 1990), 2990) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
@@ -60,19 +60,19 @@ test_that("pollutant abbreviations", {
   test_data %>%
     filter_pollutants(
       c("TOG", "PM", "NOx")) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       "TOG", "PM", "NOx") %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       c("TOG", "PM"), "NOx") %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
@@ -91,19 +91,19 @@ test_that("named pollutant ids (TOG, PM, NOx)", {
   test_data %>%
     filter_pollutants(
       c(TOG = 990, PM = 1990, NOx = 2990)) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       c(TOG = 990, PM = 1990), NOx = 2990) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       TOG = 990, PM = 1990, NOx = 2990) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
@@ -126,19 +126,19 @@ test_that("named pollutant ids (BTEX)", {
       pollutant = pol_id %>%
         codec::decode(BTEX_POLLUTANTS) %>%
         factor(., levels = names(BTEX_POLLUTANTS))) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       "Benzene" = 41, "Toluene" = 293, "Ethylbenzene" = 333, "Xylene" = 307) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_pollutants(
       c("Benzene" = 41, "Toluene" = 293), "Ethylbenzene" = 333, "Xylene" = 307) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })

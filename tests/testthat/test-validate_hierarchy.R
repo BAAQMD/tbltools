@@ -38,7 +38,7 @@ test_that("output is sorted and doesn't contain comments", {
   validated_hierarchy <-
     validate_hierarchy(input_data)
 
-  expect_equal(
+  expect_equivalent(
     names(validated_hierarchy),
     c("cat_id", "cat_h1", "cat_h2"))
 
@@ -55,7 +55,7 @@ test_that("output is sorted and doesn't contain comments", {
 #   validated_hierarchy <-
 #     validate_hierarchy(input_data)
 #
-#   expect_equal(
+#   expect_equivalent(
 #     names(validated_hierarchy),
 #     c("cat_id", "cat_h1", "cat_h2"))
 #

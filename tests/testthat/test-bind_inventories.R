@@ -22,7 +22,7 @@ test_that("simple case works", {
       foo = BY2011_test_data,
       bar = BY2011_test_data) # just bind it to itself
 
-  expect_equal(
+  expect_equivalent(
     nrow(test_data),
     nrow(BY2011_test_data) * 2)
 
@@ -59,7 +59,7 @@ test_that("integer and character `cat_id` can be combined", {
 
     "coercing `cat_id` to character")
 
-  expect_equal(
+  expect_equivalent(
     nrow(test_data),
     nrow(BY2011_test_data) + nrow(BY2008_test_data))
 
@@ -103,7 +103,7 @@ test_that("names are converted to factor levels, in the order supplied", {
     test_data[["inventory"]],
     "factor")
 
-  expect_equal(
+  expect_equivalent(
     levels(test_data[["inventory"]]),
     c("BY2011", "BY2008"))
 
@@ -116,7 +116,7 @@ test_that("names are converted to factor levels, in the order supplied", {
       BY2008 = BY2008_test_data,
       BY2011 = BY2011_test_data)
 
-  expect_equal(
+  expect_equivalent(
     levels(test_data[["inventory"]]),
     c("BY2008", "BY2011"))
 

@@ -21,6 +21,6 @@ test_that("success", {
   extracted <- extract_lookup_table(sliced, fac_id, src_id, src_name)
 
   expected <- tibble(fac_id = 10L, src_id = 1:2L, src_name = c("foo", "bar"))
-  expect_equal(extracted, expected)
+  expect_equivalent(extracted, expected)
 
 })

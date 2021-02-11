@@ -2,7 +2,7 @@ context("read_csv")
 
 test_that("simple", {
 
-  expect_equal(
+  expect_equivalent(
     read_csv(test_csv_file),
     test_csv_data)
 
@@ -14,7 +14,7 @@ test_that("verbose", {
     read_csv(test_csv_file, verbose = TRUE),
     "3 records")
 
-  expect_equal(
+  expect_equivalent(
     read_csv(test_csv_file, verbose = TRUE),
     test_csv_data)
 

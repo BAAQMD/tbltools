@@ -19,19 +19,19 @@ test_that("unnamed categories", {
   test_data %>%
     filter_categories(
       283:285) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_categories(
       283, 284, 285) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_categories(
       c(283, 284), 285) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
@@ -57,19 +57,19 @@ test_that("named categories", {
   test_data %>%
     filter_categories(
       test_categories) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_categories(
       "Space Heating" = 283L, "Water Heating" = 284L, "Cooking" = 285L) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
   test_data %>%
     filter_categories(
       c("Space Heating" = 283L, "Water Heating" = 284L), "Cooking" = 285L) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
@@ -93,7 +93,7 @@ test_that("named categories, with duplicates (like fct_collapse)", {
   test_data %>%
     filter_categories(
       test_categories) %>%
-    expect_equal(
+    expect_equivalent(
       expected_data)
 
 })
@@ -116,7 +116,7 @@ test_that("data frame (as set)", {
   test_data %>%
     filter_categories(
       whitelist_set) %>%
-    expect_equal(
+    expect_equivalent(
       expected)
 
 })
