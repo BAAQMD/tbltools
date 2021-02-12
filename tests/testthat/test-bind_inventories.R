@@ -103,7 +103,7 @@ test_that("names are converted to factor levels, in the order supplied", {
       BY2011 = BY2011_test_data,
       BY2008 = BY2008_test_data)
 
-  expect_s3_class(
+  expect_is(
     test_data[["inventory"]],
     "factor")
 
