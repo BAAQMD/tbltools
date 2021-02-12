@@ -7,7 +7,9 @@
 select_first(input_data, ...)
 }
 \arguments{
-\item{...}{}
+\item{input_data}{tabular data}
+
+\item{...}{column name(s)}
 }
 \value{
 
