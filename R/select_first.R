@@ -8,7 +8,6 @@
 #' @return
 #' @export
 #'
-#' @examples
 select_first <- function (input_data, ...) {
 
   selected_vars <-
