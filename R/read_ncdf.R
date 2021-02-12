@@ -9,7 +9,6 @@
 #' @return
 #' @export
 #'
-#' @examples
 read_ncdf <- function(
   path,
   ...,
