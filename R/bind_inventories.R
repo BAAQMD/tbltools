@@ -33,6 +33,9 @@ bind_inventories <- function (
 
   }
 
+  # Bit of a hack to support merging of the `.id` column, later on.
+  names(data_list)[names(data_list) == ""] <- "NA"
+
   #
   # Check that all inventories in `...` have the same `ems_unit`.
   #
@@ -105,11 +108,26 @@ bind_inventories <- function (
   stacked_data <-
     bind_rows(
       data_list,
-      .id = .id) %>%
-    mutate_at(
-      vars(.id),
-      ~ factor(., levels = names(data_list)))
+      .id = ".name") %>%
+    mutate(
+      .name = na_if(.name, "NA"))
 
-  return(stacked_data)
+  if (.id %not_in% names(stacked_data)) {
+    stacked_data[[.id]] <- NA_character_
+  }
+
+  labeled_data <-
+    stacked_data %>%
+    mutate(
+      !!.id := coalesce(
+        .[[.id]],
+        .name)) %>%
+    mutate_at(
+      vars(!!.id),
+      fct_inorder) %>%
+    select(
+      -.name)
+
+  return(labeled_data)
 
 }
