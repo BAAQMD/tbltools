@@ -1,7 +1,7 @@
 #' Move selected column(s) to first position
 #'
-#' @param input_data
-#' @param ...
+#' @param input_data tabular data
+#' @param ... column name(s)
 #'
 #' @seealso [select_last()]
 #'
