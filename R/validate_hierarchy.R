@@ -32,7 +32,7 @@ validate_hierarchy <- function (
   duplicate_ids <- id_values[duplicated(id_values)]
   missing_ids <- which(is.na(id_values))
 
-  if (any(duplicate_ids)) {
+  if (length(duplicate_ids) > 0) {
 
     err_msg <- str_c(
       "[import_hierarchy] duplicates detected in ",
