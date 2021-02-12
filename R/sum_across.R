@@ -1,11 +1,9 @@
 #' sum_across
 #'
-#' @note May not work for list-columns. See TODO inside function.
-#'
-#' @param x
-#' @param ...
-#' @param na.rm
-#' @param .groups
+#' @param input_data tabular data
+#' @param ... column name(s)
+#' @param na.rm logical
+#' @param .groups passed to [dplyr::summarise()]
 #'
 #' @importFrom dplyr summarize across
 #'
@@ -13,20 +11,15 @@
 #' @export
 #'
 #' @examples
-sum_across <- function (x, ..., na.rm = TRUE, .groups = "drop") {
+sum_across <- function (
+  input_data,
+  ...,
+  na.rm = TRUE,
+  .groups = "drop"
+) {
 
-  #
-  # TODO: support aggregation of list-columns via something like:
-  #
-  #   ~ list(reduce(., `+`))
-  #
-  # ... instead of
-  #
-  #   ~ sum(., na.rm = na.rm))
-  #
-
-  dplyr::summarize(
-    x,
+  dplyr::summarise(
+    input_data,
     dplyr::across(
       c(...),
       ~ sum(., na.rm = na.rm)),
