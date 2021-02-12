@@ -82,6 +82,19 @@ bind_inventories <- function (
 
   }
 
+  # FIXME: coercing `year` to character is a hotfix for problem stacking dfs when `year` is of class `CY`.
+  # Won't be needed once the updated `yeartools` package (2021.02.07+) is installed.
+  data_list <-
+    map(
+      data_list,
+      ~ mutate(., year = as.character(year)))
+
+  if (is.null(names(data_list))) {
+    err_msg <- "Arguments to `bind_inventories()` must be named."
+    stop(err_msg)
+  }
+
+
   #
   # Stack the inventories together.
   #

@@ -1,5 +1,8 @@
+require(yeartools)
+
 BY2011_test_data <-
   tibble(
+    year = CY(2011),
     cat_id = 10L,
     cnty_abbr = c("ALA", "CC", "MAR", "NAP", "SF", "SM", "SNC", "SOL", "SON"),
     ems_qty = rnorm(n = 9),
@@ -11,6 +14,7 @@ BY2011_test_data <-
 #
 BY2008_test_data <-
   tibble(
+    year = CY(2008),
     cat_id = "P10",
     ems_qty = 12345,
     ems_unit = "ton/yr")
