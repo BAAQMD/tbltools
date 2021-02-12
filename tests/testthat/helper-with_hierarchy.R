@@ -19,5 +19,6 @@ test_hierarchy <-
     ),
     cat_h4 = c(" Tanker - Aux. Engine", "Gasoline", "Power Imports"),
     cat_h5 = c(NA, "4 Stroke", NA),
-    cat_h6 = c(NA_character_, NA_character_, NA_character_)
-  )
+    cat_h6 = c(NA_character_, NA_character_, NA_character_)) %>%
+  arrange(
+    cat_id)

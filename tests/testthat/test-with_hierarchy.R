@@ -11,13 +11,10 @@ test_that("test_hierarchy", {
 
 test_that("with_hierarchy (using BY2011 and test_hierarchy)", {
 
-  input_data <-
-    BY2011::BY2011_annual_emission_data
-
   test_data <-
-    input_data %>%
-    with_hierarchy(
-      test_hierarchy)
+    BY2011::BY2011_annual_emission_data %>%
+    with_hierarchy(test_hierarchy) %>%
+    arrange(cat_id)
 
   test_data %>%
     distinct(cat_id) %>%
@@ -28,6 +25,7 @@ test_that("with_hierarchy (using BY2011 and test_hierarchy)", {
     select_at(
       vars(tidyselect::one_of(names(test_hierarchy)))) %>%
     distinct() %>%
+    arrange(cat_id) %>%
     expect_equivalent(
       test_hierarchy)
 

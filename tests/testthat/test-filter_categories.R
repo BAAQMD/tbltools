@@ -52,7 +52,9 @@ test_that("named categories", {
       vars(category),
       ~ factor(., levels = names(test_categories))) %>%
     mutate(
-      cat_h0 = "Area")
+      cat_h0 = "Area") %>%
+    select(
+      cat_id, cat_h0, category, everything())
 
   test_data %>%
     filter_categories(
