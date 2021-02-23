@@ -4,6 +4,14 @@
 #'
 #' @note Invoked automatically by [import_hierarchy()].
 #'
+#' @importFrom vartools find_id_var
+#' @importFrom dplyr pull matches n_distinct
+#' @importFrom glue glue
+#' @importFrom strtools str_or str_and
+#' @importFrom tidyselect vars_select
+#' @importFrom stringr str_extract
+#' @importFrom readr parse_integer
+#'
 #' @seealso
 #' - [import_hierarchy()]
 #' - [with_hierarchy()]
@@ -26,78 +34,75 @@ validate_hierarchy <- function (
   }
 
   msg("id_var is: ", id_var)
-  id_values <- pull(input_data, id_var)
+  id_values <- dplyr::pull(input_data, id_var)
 
-  msg("checking for NA and/or duplicate IDs")
+  # Check for duplicates in the `id_var` column
   duplicate_ids <- id_values[duplicated(id_values)]
-  missing_ids <- which(is.na(id_values))
-
   if (length(duplicate_ids) > 0) {
-
-    err_msg <- str_c(
-      "[import_hierarchy] duplicates detected in ",
-      id_var, ": ",
-      pack_integers(duplicate_ids))
-
+    err_msg <- glue::glue(
+      "[import_hierarchy] duplicate IDs detected in ",
+      "{id_var}: {pack_integers(duplicate_ids)}")
     stop(err_msg)
-
+  } else {
+    msg("no duplicate IDs detected")
   }
 
+  # Check for missing IDs in the `id_var` column
+  missing_ids <- which(is.na(id_values))
   if (any(missing_ids)) {
-
-    err_msg <- str_c(
-      "[import_hierarchy] missing values detected in ",
-      id_var)
-
+    err_msg <- glue::glue(
+      "[import_hierarchy] missing values detected in {id_var}")
     stop(err_msg)
-
+  } else {
+    msg("no missing IDs detected")
   }
 
+  # Report the number of *distinct* IDs
+  n_ids <- n_distinct(id_values)
+  msg("n = ", n_ids, " distinct `", id_var, "`")
+
+  # `h_vars` <- names of columns ending with "_h" and a digit
   h_vars <-
-    names(input_data) %>%
-    tidyselect::vars_select(
-      dplyr::matches("_h[0-9]+"))
+    sort(
+      tidyselect::vars_select(
+      names(input_data),
+      dplyr::matches("_h[0-9]+$")))
 
   if (length(h_vars) < 1) {
     err_msg <- "[import_hierarchy] must have at least one column ending in h1, h2, etc. "
     stop(err_msg)
+  } else {
+    msg("h_vars is: ", str_csv(h_vars))
   }
 
-  msg("checking ", str_csv(h_vars))
-
+  # Check for duplicates in `h_vars`
   if (any(duplicated(h_vars))) {
     i <- which(duplicated(h_vars))
     err_msg <- str_c(
       "[import_hierarchy] found duplicate h* vars: ",
       str_csv(h_vars[i]))
+    stop(err_msg)
+  } else {
+    msg("no duplicates in ", strtools::str_or(h_vars))
   }
 
-  sorted_h_vars <-
-    sort(h_vars)
-
   h_indices <-
-    sorted_h_vars %>%
-    str_extract("[0-9]+$") %>%
-    parse_integer()
+    readr::parse_integer(
+      stringr::str_extract(
+        h_vars,
+        pattern = "[0-9]+$"))
 
   if (min(h_indices) > 1) {
     err_msg <- "[import_hierarchy] should contain _h0 or _h1"
     stop(err_msg)
   }
 
-  if (!all_true(diff(h_indices) == 1)) {
-    err_msg <- "[import_hierarchy] h* vars are not sequential"
-    stop(err_msg)
-  }
-
-  n_ids <- n_distinct(id_values)
-  msg("n = ", n_ids, " distinct `", id_var, "`")
-
+  msg("dropping all columns except ", strtools::str_and(id_var, h_vars))
   validated_hierarchy <-
-    input_data %>%
     dplyr::select(
+      input_data,
       id_var,
-      !!sorted_h_vars)
+      !!h_vars)
 
   return(validated_hierarchy)
 
