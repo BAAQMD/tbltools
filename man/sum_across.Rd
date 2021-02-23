@@ -4,17 +4,20 @@
 \alias{sum_across}
 \title{sum_across}
 \usage{
-sum_across(x, ..., na.rm = TRUE, .groups = "drop")
+sum_across(input_data, ..., na.rm = TRUE, .groups = "drop")
 }
 \arguments{
-\item{.groups}{}
+\item{input_data}{tabular data}
+
+\item{...}{column name(s)}
+
+\item{na.rm}{logical}
+
+\item{.groups}{passed to \code{\link[dplyr:summarise]{dplyr::summarise()}}}
 }
 \value{
 
 }
 \description{
 sum_across
-}
-\note{
-May not work for list-columns. See TODO inside function.
 }
