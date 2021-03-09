@@ -1,14 +1,14 @@
 #' Save a pivot table to disk
 #'
 #' @param object created with `pivot_table()`
-#' @param file (character) path on disk
+#' @param path (character) path on disk
 #' @param ... further arguments to [htmlwidgets::saveWidget()]
 #' @param verbose (logical)
 #'
 #' @export
 write_pivot_table <- function (
   object,
-  file,
+  path,
   overwrite = TRUE,
   selfcontained = TRUE,
   ...,
@@ -22,7 +22,7 @@ write_pivot_table <- function (
   }
 
   tmpdir <- tempdir()
-  tmpfn <- file.path(tmpdir, file)
+  tmpfn <- file.path(tmpdir, path)
   tmpdn <- dirname(tmpfn)
 
   if (!dir.exists(tmpdn)) {
@@ -38,19 +38,30 @@ write_pivot_table <- function (
   htmlwidgets::saveWidget(
     object,
     file = tmpfn,
-    selfcontained = selfcontained,
+    selfcontained = TRUE,
     ...)
 
-  if (!dir.exists(dirname(file))) {
-    msg("creating dir: ", dirname(file))
-    dir.create(dirname(file), recursive = TRUE)
+  if (!dir.exists(dirname(path))) {
+    msg("creating dir: ", dirname(path))
+    dir.create(dirname(path), recursive = TRUE)
   }
 
-  success <-
-    file.copy(
-      dirname(tmpfn),
-      file.path(dirname(file), ".."),
-      recursive = TRUE)
+  if (isTRUE(selfcontained)) {
+    success <-
+      file.copy(
+        dirname(tmpfn),
+        file.path(dirname(path), ".."),
+        recursive = TRUE,
+        overwrite = overwrite)
+  } else {
+    success <-
+      file.copy(
+        tmpfn,
+        dirname(path),
+        overwrite = overwrite)
+  }
+
+  stopifnot(success)
 
   return(invisible(object))
 
