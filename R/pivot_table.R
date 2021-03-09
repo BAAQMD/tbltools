@@ -42,12 +42,16 @@ pivot_table <- function (
 
   if (missing(columns)) {
     # year_var <- "year" # WAS: first(names(input_data) %>% select_vars(ends_with("_yr")) %>% union("year"))
-    columns <-
-      if ("pol_abbr" %in% names(input_data)) {
-        c("pol_abbr", year_var)
-      } else {
-        year_var
-      }
+    columns <- year_var
+    if ("pol_abbr" %in% names(input_data)) {
+      columns <- c("pol_abbr", columns)
+    }
+  }
+
+  if ("ems_unit" %in% names(input_data)) {
+    if (funtools::all_same(pull(input_data, ems_unit))) {
+      columns <- c("ems_unit", columns)
+    }
   }
 
   if (missing(values)) {
