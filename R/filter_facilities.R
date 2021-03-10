@@ -1,8 +1,8 @@
 #' Filter and (re)name facilities
 #'
-#' @param input_data (tabular data) must contain `fac_id`
-#' @param whitelist (named list) names = facility names; elements = facility IDs (see examples)
-#' @return subset of `input_data`, with additional column `fac_name`
+#' @param input_data (tabular data)
+#' @param ... either an (optionally named) vector or list of category IDs, *or* a tabular dataset having a column `cat_id`.
+#' @param .name if the dot-args (above) are named, then the names will be used to populate a column in the result. `.name` will be that column's name.
 #'
 #' @note `input_data` **must** contain column `fac_id`
 #'
@@ -15,12 +15,11 @@
 #'   "sets" are provided for you by the `inventory` package:
 #'
 #'   - `DST_REFINING_FACILTIES`
-#'
 #'   - `DST_LANDFILL_FACILITIES`
-#'
 #'   - `DST_POWER_FACILITIES`
 #'
-#' @seealso [filter_sources()]
+#' @seealso [filter_categories()]
+#' @seealso [filter_pollutants()]
 #' @seealso [find_facility_ids()]
 #' @seealso [with_facility_name()]
 #' @seealso [with_IRIS_site()]
@@ -51,12 +50,79 @@
 #'   tabulate_emissions_by(fac_name, pol_abbr, year)
 #'
 #' @export
-filter_facilities <- function (input_data, whitelist) {
+filter_facilities <- function (
+  input_data,
+  ...,
+  .name = "facility",
+  verbose = getOption("verbose")
+) {
 
-  stopifnot(is.list(whitelist) | is.numeric(whitelist))
-  stopifnot(!is.null(names(whitelist)))
+  if (inherits(first(list(...)), "data.frame")) {
+    facilities <-
+      pull_distinct(first(list(...)), fac_id)
+  } else {
+    facilities <-
+      packtools::unpack_args(
+        ...)
+  }
 
-  filtered <- filter(input_data, fac_id %in% unlist(whitelist))
-  mutate(filtered, fac_name = decode(fac_id, unpack_list(whitelist)))
+  stopifnot(
+    is.list(facilities)
+    | is.numeric(facilities)
+    | is.character(facilities))
+
+  if (!is.null(names(facilities))) {
+
+    unpacked_ids <-
+      unlist(facilities)
+
+    unpacked_codec <-
+      packtools::unpack_list(facilities)
+
+    filtered <-
+      filter(
+        input_data,
+        fac_id %in% unpacked_ids)
+
+    mutated <-
+      mutate(
+        filtered,
+        !!.name := factor(
+          decode(fac_id, unpacked_codec),
+          levels = unique(names(unpacked_codec)))) # force subsequent ordering
+
+    return(mutated)
+
+  }
+
+  if (inherits(facilities, c("integer", "numeric", "character"))) {
+
+    # if `facilities` is numeric or character, then filter on `fac_id`
+    filtered <-
+      filter(
+        input_data,
+        fac_id %in% facilities)
+
+    mutated <-
+      mutate(
+        filtered,
+        !!.name := factor(
+          str_c("#", fac_id),
+          levels = str_c("#", unique(facilities)))) # force subsequent ordering
+
+    return(mutated)
+
+  } else {
+
+    err_msg <-
+      str_c(
+        "[filter_facilities] ",
+        "don't know how to handle a facilities of class ",
+        class(facilities))
+
+    stop(err_msg)
+
+  }
+
 
 }
