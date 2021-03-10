@@ -6,7 +6,7 @@
 \usage{
 write_pivot_table(
   object,
-  file,
+  path,
   overwrite = TRUE,
   selfcontained = TRUE,
   ...,
@@ -16,7 +16,7 @@ write_pivot_table(
 \arguments{
 \item{object}{created with \code{pivot_table()}}
 
-\item{file}{(character) path on disk}
+\item{path}{(character) path on disk}
 
 \item{...}{further arguments to \code{\link[htmlwidgets:saveWidget]{htmlwidgets::saveWidget()}}}
 

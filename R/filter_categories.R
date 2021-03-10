@@ -20,6 +20,9 @@
 #' residential_NG_data <- BY2011::BY2011_annual_emission_data %>% filter_categories(RESIDENTIAL_NG_COMBUSTION_CATEGORIES)
 #' residential_NG_data %>% tabulate_emissions_by(category, cat_id, year)
 #'
+#' @seealso [filter_facilities()]
+#' @seealso [filter_pollutants()]
+#'
 #' @export
 filter_categories <- function (
   input_data,

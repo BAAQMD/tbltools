@@ -36,3 +36,8 @@ residential_NG_data <- BY2011::BY2011_annual_emission_data \%>\% filter_categori
 residential_NG_data \%>\% tabulate_emissions_by(category, cat_id, year)
 
 }
+\seealso{
+\code{\link[=filter_facilities]{filter_facilities()}}
+
+\code{\link[=filter_pollutants]{filter_pollutants()}}
+}

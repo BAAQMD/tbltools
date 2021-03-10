@@ -17,6 +17,9 @@
 #' BTEX_data <- DB_data %>% filter_pollutants(BTEX_POLLUTANTS)
 #' BTEX_data %>% tabulate_emissions_by(pol_abbr, year)
 #'
+#' @seealso [filter_categories()]
+#' @seealso [filter_facilities()]
+#'
 #' @export
 filter_pollutants <- function (
   input_data,

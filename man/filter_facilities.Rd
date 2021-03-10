@@ -4,15 +4,19 @@
 \alias{filter_facilities}
 \title{Filter and (re)name facilities}
 \usage{
-filter_facilities(input_data, whitelist)
+filter_facilities(
+  input_data,
+  ...,
+  .name = "facility",
+  verbose = getOption("verbose")
+)
 }
 \arguments{
-\item{input_data}{(tabular data) must contain \code{fac_id}}
+\item{input_data}{(tabular data)}
 
-\item{whitelist}{(named list) names = facility names; elements = facility IDs (see examples)}
-}
-\value{
-subset of \code{input_data}, with additional column \code{fac_name}
+\item{...}{either an (optionally named) vector or list of category IDs, \emph{or} a tabular dataset having a column \code{cat_id}.}
+
+\item{.name}{if the dot-args (above) are named, then the names will be used to populate a column in the result. \code{.name} will be that column's name.}
 }
 \description{
 \strong{This really helps when the same facility changes IDs.} You
@@ -59,7 +63,9 @@ P66_CH4_data \%>\%
 
 }
 \seealso{
-\code{\link[=filter_sources]{filter_sources()}}
+\code{\link[=filter_categories]{filter_categories()}}
+
+\code{\link[=filter_pollutants]{filter_pollutants()}}
 
 \code{\link[=find_facility_ids]{find_facility_ids()}}
 

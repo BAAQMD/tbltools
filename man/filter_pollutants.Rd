@@ -31,3 +31,8 @@ BTEX_data <- DB_data \%>\% filter_pollutants(BTEX_POLLUTANTS)
 BTEX_data \%>\% tabulate_emissions_by(pol_abbr, year)
 
 }
+\seealso{
+\code{\link[=filter_categories]{filter_categories()}}
+
+\code{\link[=filter_facilities]{filter_facilities()}}
+}
