@@ -57,6 +57,10 @@ filter_facilities <- function (
   verbose = getOption("verbose")
 ) {
 
+  if ("fac_id" %not_in% names(input_data)) {
+    stop("[filter_facilities] input data must have a column named fac_id")
+  }
+
   if (inherits(first(list(...)), "data.frame")) {
     facilities <-
       pull_distinct(first(list(...)), fac_id)
