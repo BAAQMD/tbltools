@@ -31,6 +31,10 @@ filter_categories <- function (
   verbose = getOption("verbose")
 ) {
 
+  if ("cat_id" %not_in% names(input_data)) {
+    stop("[filter_categories] input data must have a column named cat_id")
+  }
+
   if (inherits(first(list(...)), "data.frame")) {
     categories <-
       pull_distinct(first(list(...)), cat_id)
