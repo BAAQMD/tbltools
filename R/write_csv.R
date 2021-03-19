@@ -5,6 +5,7 @@
 #'
 #' @param input_data      data frame
 #' @param file       filename
+#' @param prompt     `TRUE` or character; if not `FALSE`, confirmation is requested
 #' @param signif     (optional) significant digits (default `Inf`)
 #' @param digits     (optional) passed to `format` if `signif` is not specified
 #' @param na         how to represent \code{NA} ("" means blank)

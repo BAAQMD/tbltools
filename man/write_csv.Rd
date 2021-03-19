@@ -7,6 +7,7 @@
 write_csv(
   input_data,
   file,
+  prompt = FALSE,
   signif = Inf,
   digits = 15,
   date_format = "\%Y-\%m-\%d",
@@ -22,6 +23,8 @@ write_csv(
 \item{input_data}{data frame}
 
 \item{file}{filename}
+
+\item{prompt}{\code{TRUE} or character; if not \code{FALSE}, confirmation is requested}
 
 \item{signif}{(optional) significant digits (default \code{Inf})}
 
