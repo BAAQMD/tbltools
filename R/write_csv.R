@@ -21,6 +21,7 @@
 write_csv <- function (
   input_data,
   file,
+  prompt = FALSE,
   signif = Inf,
   digits = 15,
   date_format = "%Y-%m-%d",
@@ -83,6 +84,18 @@ write_csv <- function (
     # mutate_if(is_bare_double, partial(format_decimal, signif = signif)) %>%
     # mutate_if(Negate(is_numeric_or_decimal), str_quote) %>%
     mutate_if(lubridate::is.Date, format_date)
+
+  if (isTRUE(prompt)) {
+    prompt <- glue::glue("Write {nrow(tidied)} records to {file}? [y/N]")
+  }
+
+  if (is.character(prompt)) {
+    choice <- readline(prompt = prompt)
+    if (choice != "y") {
+      message("OK, didn't write anything to disk")
+      return(invisible(input_data))
+    }
+  }
 
   write.csv(
     tidied,
