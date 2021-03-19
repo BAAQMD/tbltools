@@ -106,6 +106,12 @@ test_that("named pollutant ids (TOG, PM, NOx)", {
     expect_equivalent(
       expected)
 
+  test_data %>%
+    filter_pollutants(
+      "NOx") %>%
+    expect_equivalent(
+      filter(expected, pol_abbr == "NOx"))
+
 })
 
 test_that("named pollutant ids (BTEX)", {
