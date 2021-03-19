@@ -10,7 +10,6 @@
 #' @return
 #' @export
 #'
-#' @examples
 sum_across <- function (
   input_data,
   ...,
