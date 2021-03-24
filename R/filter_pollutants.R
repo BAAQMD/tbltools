@@ -61,7 +61,7 @@ filter_pollutants <- function (
 
   if (is.character(pollutants)) {
 
-    if ("pol_id" %not_in% names(input_data)) {
+    if ("pol_abbr" %not_in% names(input_data)) {
       stop("[filter_pollutants] input data must have a column named pol_abbr or pol_id")
     }
 
