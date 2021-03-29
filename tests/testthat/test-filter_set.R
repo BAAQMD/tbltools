@@ -26,3 +26,7 @@ test_that("x not tabular", {
   expect_error(filter_set(mtcars, x = c(vs = 0)))
   expect_error(filter_set(mtcars, x = list(vs = 0)))
 })
+
+test_that("x and data with no columns in common", {
+  expect_error(filter_set(mtcars, x = data.frame(foo = "bar")))
+})

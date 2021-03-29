@@ -51,8 +51,13 @@ filter_set.data.frame <- function (data, x, ...) {
 
   by_vars <- intersect(names(x), names(data))
   if (isFALSE(setequal(by_vars, names(x)))) {
-    warn_msg <- strtools::str_csv("[filter_set] filtering only on: ", by_vars)
-    warning(warn_msg)
+    if (isTRUE(length(by_vars) == 0)) {
+      err_msg <- "`x` must have at least one column in common with `data`"
+      stop(err_msg)
+    } else {
+      warn_msg <- strtools::str_csv("[filter_set] filtering only on: ", by_vars)
+      warning(warn_msg)
+    }
   }
 
   filtered <- dplyr::semi_join(data, x, by = by_vars)
