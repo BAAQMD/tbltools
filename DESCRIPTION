@@ -53,6 +53,7 @@ Collate:
     'filter_categories.R'
     'filter_facilities.R'
     'filter_pollutants.R'
+    'filter_set.R'
     'filter_sources.R'
     'filter_years.R'
     'fun_join.R'
