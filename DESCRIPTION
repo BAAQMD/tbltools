@@ -29,7 +29,9 @@ Depends:
     tibble, 
     tidyselect
 Imports:
-    fmatch
+    fmatch,
+    magrittr,
+    forcats
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
