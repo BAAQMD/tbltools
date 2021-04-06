@@ -19,18 +19,6 @@ Filter by pollutant, and (optionally) create custom labels at the same time.
 Use with your own list (see examples below), or use with a curated list (like \code{DB_GHG_POLLUTANT_CODES}).
 This can be particularly helpful when working with TACs (which may not have the \code{pol_abbr} that you want.)
 }
-\examples{
-# Here are some emissions we'd like to filter AND label.
-DB_data <- RY(2011:2015) \%>\% point_source_emissions()
-
-# Here's what we want to analyze. (Hint: look at `DB_POLLUTANT_NAMES` for name-id pairs.)
-BTEX_POLLUTANTS <- list("Benzene" = 41, "Toluene" = 293, "Ethylbenzene" = 333, "Xylene" = 307)
-
-# `filter_pollutants()` both filters the data, and assigns names to `pol_abbr`.
-BTEX_data <- DB_data \%>\% filter_pollutants(BTEX_POLLUTANTS)
-BTEX_data \%>\% tabulate_emissions_by(pol_abbr, year)
-
-}
 \seealso{
 \code{\link[=filter_categories]{filter_categories()}}
 

@@ -16,10 +16,3 @@ filter_years(input_data, years, verbose = getOption("verbose"))
 \description{
 Placeholder for more sophisticated filtering (once \code{NPS} package is underway).
 }
-\examples{
-library(BY2011)
-BY2011_annual_emission_data \%>\%
-  filter_years(
-    CY(2011))
-
-}

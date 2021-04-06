@@ -6,12 +6,6 @@
 #' @param years `RY`, `PY`, or `CY`
 #' @param verbose display messages
 #'
-#' @examples
-#' library(BY2011)
-#' BY2011_annual_emission_data %>%
-#'   filter_years(
-#'     CY(2011))
-#'
 #' @export
 filter_years <- function (
   input_data,

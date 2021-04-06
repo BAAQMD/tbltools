@@ -9,10 +9,3 @@
 \description{
 Analogous to SQL UPDATE command
 }
-\examples{
-RY2015_refining_data <- RY(2015) \%>\% point_source_emissions() \%>\% filter_facilities(DST_REFINING_FACILITIES)
-RY2015_Chevron_FCCU_PM <- where(year == RY(2015), fac_id == 10, src_id == 4285, pol_abbr == "PM")
-this_data <- RY2015_refining_data \%>\% update(RY2015_Chevron_FCCU_PM, ems_qty = ems_qty * 2.0)
-this_data \%>\% tabulate_emissions_by(fac_id, pol_abbr, digits = 0)
-
-}

@@ -6,20 +6,6 @@
 #' @param ... either an (optionally named) vector or list of category IDs, *or* a tabular dataset having a column `cat_id`.
 #' @param .name if the dot-args (above) are named, then the names will be used to populate a column in the result. `.name` will be that column's name.
 #'
-#' @examples
-#' # Here are some emissions we'd like to filter AND label.
-#' DB_data <- RY(2011:2012) %>% point_source_emissions()
-#'
-#' # Here's what we want to analyze. (Hint: look at `DB_POLLUTANT_NAMES` for name-id pairs.)
-#' RESIDENTIAL_NG_COMBUSTION_CATEGORIES <- c(
-#'   "Space Heating" = 283,
-#'   "Water Heating" = 284,
-#'   "Cooking" = 285)
-#'
-#' # `filter_categories()` both filters the data, and assigns names to `category` (by default; use the `.name` argument to change it).
-#' residential_NG_data <- BY2011::BY2011_annual_emission_data %>% filter_categories(RESIDENTIAL_NG_COMBUSTION_CATEGORIES)
-#' residential_NG_data %>% tabulate_emissions_by(category, cat_id, year)
-#'
 #' @seealso [filter_facilities()]
 #' @seealso [filter_pollutants()]
 #'

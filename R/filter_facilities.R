@@ -24,31 +24,6 @@
 #' @seealso [with_facility_name()]
 #' @seealso [with_IRIS_site()]
 #'
-#' @examples
-#' # First retrieve some data.
-#' some_CH4_data <-
-#'   RY(2009:2013) %>%
-#'   point_source_emissions() %>%
-#'   filter(pol_abbr == "CH4")
-#'
-#' # You can filter for a whole "set" of related facilities ...
-#' landfill_CH4_data <-
-#'   some_CH4_data %>%
-#'   filter_facilities(DST_LANDFILL_FACILITIES)
-#'
-#' # ... or just a single specific "facility" having multiple IDs.
-#' P66_CH4_data <-
-#'   some_CH4_data %>%
-#'   filter_facilities(DST_REFINING_FACILITIES["Phillips 66"])
-#'
-#' # If you tabulate by `fac_id`, there's a discontinuity when P16 "becomes" P21359 ...
-#' P66_CH4_data %>%
-#'   tabulate_emissions_by(fac_id, pol_abbr, year)
-#'
-#' # ... but you can avoid this by grouping on `fac_name` instead of `fac_id`.
-#' P66_CH4_data %>%
-#'   tabulate_emissions_by(fac_name, pol_abbr, year)
-#'
 #' @export
 filter_facilities <- function (
   input_data,

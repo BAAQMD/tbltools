@@ -48,8 +48,3 @@ columns remain the same.
 \item \code{divide_at}: division
 }}
 
-\examples{
-mtcars \%>\% multiply_at(vars(everything), 2)  # double every value
-mtcars \%>\% divide_at(vars(mpg, cyl), mpg)    # divide `mpg` and `cyl` by `mpg`
-
-}

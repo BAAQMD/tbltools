@@ -18,9 +18,3 @@ fun_join(left, right, by = intersect(names(left), names(right)), fun = `==`)
 \description{
 (Left) join with a custom comparator
 }
-\examples{
-my_df <- data.frame(cyl = c(4, 4, 6, 8), vs = c(0, 1, NA, NA), foo = c("A", "B", "C", "D"))
-my_fun <- function (e1, e2) (e1 == e2) | is.na(e2)
-fun_join(mtcars, my_df, fun = my_fun)
-
-}

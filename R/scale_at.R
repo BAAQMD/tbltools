@@ -30,10 +30,6 @@
 #'   column names, a numeric vector of column positions, or `NULL`.
 #' @param by a value or expression, to be evaluated within `.tbl`
 #'
-#' @examples
-#' mtcars %>% multiply_at(vars(everything), 2)  # double every value
-#' mtcars %>% divide_at(vars(mpg, cyl), mpg)    # divide `mpg` and `cyl` by `mpg`
-#'
 NULL
 
 #' @export

@@ -5,11 +5,6 @@
 #' @param by    names of columns to join by
 #' @param fun   custom comparator (see examples)
 #'
-#' @examples
-#' my_df <- data.frame(cyl = c(4, 4, 6, 8), vs = c(0, 1, NA, NA), foo = c("A", "B", "C", "D"))
-#' my_fun <- function (e1, e2) (e1 == e2) | is.na(e2)
-#' fun_join(mtcars, my_df, fun = my_fun)
-#'
 #' @export
 fun_join <- function (left, right, by = intersect(names(left), names(right)), fun = `==`) {
 

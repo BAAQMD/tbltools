@@ -18,7 +18,6 @@ patch(object, cond, ...)
 \description{
 Patch data on the fly.
 }
-\examples{
-  patch(mtcars, where(vs == 0, am == 1), gear = Inf, carb = carb + 10)
-
+\note{
+FIXME: support \code{where(...)} (again) in some way
 }

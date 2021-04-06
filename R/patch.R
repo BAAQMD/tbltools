@@ -7,8 +7,7 @@
 #'
 #' @importFrom lazyeval lazy_dots lazy_eval
 #'
-#' @examples
-#'   patch(mtcars, where(vs == 0, am == 1), gear = Inf, carb = carb + 10)
+#' @note FIXME: support `where(...)` (again) in some way
 #'
 #' @export
 patch <- function (object, cond, ...) UseMethod("patch")
