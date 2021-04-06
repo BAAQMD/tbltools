@@ -39,7 +39,7 @@ Remotes:
     github::BAAQMD/funtools,
     github::BAAQMD/difftools
 Reverse-depends: inventory
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
