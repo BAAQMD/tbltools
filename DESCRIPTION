@@ -18,7 +18,16 @@ Depends:
     lubridate,
     readr,
     readxl (>= 0.1.0.9000),
-    rpivotTable
+    rpivotTable,
+    data.table, 
+    digest, 
+    downloader, 
+    glue, 
+    lazyeval, 
+    purrr,
+    stringr, 
+    tibble, 
+    tidyselect
 Imports:
     fmatch
 Remotes:
@@ -41,7 +50,8 @@ Suggests:
     tidyverse,
     downloader,
     BY2011,
-    yeartools
+    yeartools,
+    here
 Collate: 
     'bind_inventories.R'
     'count_distinct.R'
@@ -90,3 +100,4 @@ Collate:
     'write_csv.R'
     'write_pivot_table.R'
     'zip_file.R'
+Encoding: UTF-8
