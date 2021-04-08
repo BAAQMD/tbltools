@@ -31,7 +31,8 @@ Depends:
 Imports:
     fmatch,
     magrittr,
-    forcats
+    forcats,
+    rlang
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,

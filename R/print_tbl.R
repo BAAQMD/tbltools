@@ -1,6 +1,9 @@
 #' @importFrom lubridate is.POSIXt
 #'
 #' @export
+#' @importFrom rlang int
+#' @importFrom stringr str_replace_all
+#' @importFrom dplyr select_
 print_tbl <- function (
   input_data,
   caption = comment(input_data),

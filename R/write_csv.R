@@ -18,6 +18,10 @@
 #'
 #' @seealso \link{read_tbl}
 #'
+#' @importFrom dplyr mutate_if
+#' @importFrom utils write.csv
+#' @importFrom rlang is_bare_double
+#' @importFrom utils timestamp
 #' @export
 write_csv <- function (
   input_data,
