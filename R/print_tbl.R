@@ -4,6 +4,7 @@
 #' @importFrom rlang int
 #' @importFrom stringr str_replace_all
 #' @importFrom dplyr select_
+#' @importFrom knitr kable
 print_tbl <- function (
   input_data,
   caption = comment(input_data),

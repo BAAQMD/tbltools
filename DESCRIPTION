@@ -32,7 +32,8 @@ Imports:
     fmatch,
     magrittr,
     forcats,
-    rlang
+    rlang,
+    knitr
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
