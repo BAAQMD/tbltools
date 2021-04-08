@@ -23,6 +23,7 @@
 #' @importFrom rlang is_bare_double
 #' @importFrom utils timestamp
 #' @importFrom stringr str_trim
+#' @importFrom strtools str_printable
 #' @export
 write_csv <- function (
   input_data,
