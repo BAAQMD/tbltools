@@ -1,6 +1,7 @@
 #' @noRd
 #'
 #' @seealso filter_facilities filter_pollutants
+#' @importFrom dplyr select_vars
 filter_and_label <- function (input_data, whitelist, id_var, label_var, ..., overwrite = TRUE, verbose = getOption("verbose")) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[filter_and_label] ", ...)
