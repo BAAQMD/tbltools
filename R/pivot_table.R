@@ -20,6 +20,7 @@
 #' - the Javascript [PivotTable.js](https://pivottable.js.org/examples/) library
 #'
 #' @export
+#' @importFrom rpivotTable rpivotTable
 pivot_table <- function (
   input_data,
   rows,
