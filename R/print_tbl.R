@@ -3,7 +3,7 @@
 #' @export
 #' @importFrom rlang int
 #' @importFrom stringr str_replace_all
-#' @importFrom dplyr select_
+#' @importFrom dplyr select_ funs
 #' @importFrom knitr kable
 print_tbl <- function (
   input_data,

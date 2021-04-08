@@ -33,7 +33,9 @@ Imports:
     magrittr,
     forcats,
     rlang,
-    knitr
+    knitr,
+    tidyr,
+    htmlwidgets
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,

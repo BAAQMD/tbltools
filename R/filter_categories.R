@@ -10,6 +10,7 @@
 #' @seealso [filter_pollutants()]
 #'
 #' @export
+#' @importFrom codec decode
 filter_categories <- function (
   input_data,
   ...,

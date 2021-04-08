@@ -21,6 +21,9 @@
 #'
 #' @export
 #' @importFrom rpivotTable rpivotTable
+#' @importFrom funtools every_nth
+#' @importFrom purrr map_chr imap
+#' @importFrom htmlwidgets saveWidget
 pivot_table <- function (
   input_data,
   rows,
