@@ -12,6 +12,7 @@ read_fst <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[read_fst] ", ...)
   fst_data <- fst::read_fst(...)
+  msg("read ", nrow(fst_data), " rows from ", fst_path)
   return(tibble::as_tibble(fst_data))
 
 }
