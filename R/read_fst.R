@@ -5,9 +5,14 @@
 #' Returns a tibble instead of a data.frame.
 #'
 #' @export
-read_fst <- function (...) {
+read_fst <- function (
+  ...,
+  verbose = getOption("verbose", default = FALSE)
+) {
 
+  msg <- function (...) if(isTRUE(verbose)) message("[read_fst] ", ...)
   fst_data <- fst::read_fst(...)
+  msg("read ", nrow(fst_data), " rows from ", fst_path)
   return(tibble::as_tibble(fst_data))
 
 }
