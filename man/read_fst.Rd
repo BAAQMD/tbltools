@@ -4,7 +4,7 @@
 \alias{read_fst}
 \title{read_fst}
 \usage{
-read_fst(...)
+read_fst(..., verbose = getOption("verbose", default = FALSE))
 }
 \description{
 Thin wrapper around fst::read_fst()
