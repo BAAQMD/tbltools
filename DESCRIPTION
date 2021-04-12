@@ -46,6 +46,7 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 2.1.0),
     data.table,
+    DataBank (>= 2021.04.12),
     datapasta,
     tidyverse,
     downloader,
