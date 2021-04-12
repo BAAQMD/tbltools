@@ -30,3 +30,16 @@ test_that("with_hierarchy (using BY2011 and test_hierarchy)", {
       test_hierarchy)
 
 })
+
+test_that("using=t0327", {
+
+  test_data <-
+    tibble(cat_id = 838)
+
+  expect_warning(
+    with_hierarchy(
+      test_data,
+      using = Ingres::t0327),
+    "deprecated")
+
+})
