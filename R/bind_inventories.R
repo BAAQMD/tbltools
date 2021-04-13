@@ -21,8 +21,12 @@ bind_inventories <- function (
 
   msg <- function (...) if(isTRUE(verbose)) message("[bind_inventories] ", ...)
 
-  data_list <-
-    list(...)
+  data_list <- list(...)
+  if (length(data_list) == 1) {
+    if (is.list(data_list[[1]])) {
+      data_list <- data_list[[1]]
+    }
+  }
 
   #
   # Check that all arguments in `...` are named.
