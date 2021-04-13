@@ -29,7 +29,13 @@ Depends:
     tibble, 
     tidyselect
 Imports:
-    fmatch
+    fmatch,
+    magrittr,
+    forcats,
+    rlang,
+    knitr,
+    tidyr,
+    htmlwidgets
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
@@ -39,16 +45,14 @@ Remotes:
     github::BAAQMD/funtools,
     github::BAAQMD/difftools
 Reverse-depends: inventory
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 2.1.0),
-    data.table,
     datapasta,
     tidyverse,
-    downloader,
     BY2011,
     yeartools,
     here

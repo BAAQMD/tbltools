@@ -7,6 +7,12 @@
 #' @param verbose display messages
 #'
 #' @export
+#' @importFrom magrittr %>%
+#' @importFrom purrr map
+#' @importFrom funtools %not_in% all_same
+#' @importFrom dplyr mutate na_if mutate_at bind_rows coalesce vars
+#' @importFrom forcats fct_inorder
+#' @importFrom rlang :=
 bind_inventories <- function (
   ...,
   .id = "inventory",

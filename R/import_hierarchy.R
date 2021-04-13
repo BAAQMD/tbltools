@@ -6,6 +6,7 @@
 #' @seealso [with_hierarchy] is better for general usage (and relies on this function).
 #'
 #' @export
+#' @importFrom dplyr select_if
 import_hierarchy <- function (
   file,
   ...,
