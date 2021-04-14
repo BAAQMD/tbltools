@@ -22,6 +22,11 @@
 #' - [inventory::with_SCC8_hierarchy()], [with_SCC8_hierarchy()], and the [EPA SCC system](https://ofmpub.epa.gov/sccwebservices/sccsearch/docs/SCC-IntroToSCCs.pdf) ([search](https://ofmpub.epa.gov/sccwebservices/sccsearch/))
 #'
 #' @export
+#' @importFrom funtools md5
+#' @importFrom dplyr left_join bind_cols arrange_at inner_join
+#' @importFrom stringr str_replace fixed
+#' @importFrom vartools drop_vars
+#' @importFrom packtools pack_integers
 with_hierarchy <- function (
   input_data,
   using = NULL,

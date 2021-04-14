@@ -14,6 +14,8 @@
 #' - rows in `y` with no match in `x`
 #'
 #' @export
+#' @importFrom strtools str_csv
+#' @importFrom dplyr anti_join
 exact_join <- function (
   x,
   y,

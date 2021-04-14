@@ -6,6 +6,7 @@
 #' @param verbose (logical)
 #'
 #' @export
+#' @importFrom dplyr filter_at all_vars
 extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOption("verbose")) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[extract_lookup_table] ", ...)

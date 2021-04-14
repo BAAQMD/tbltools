@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2021.04.12
+Version: 2021.04.13
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -29,7 +29,13 @@ Depends:
     tibble, 
     tidyselect
 Imports:
-    fmatch
+    fmatch,
+    magrittr,
+    forcats,
+    rlang,
+    knitr,
+    tidyr,
+    htmlwidgets
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
@@ -39,24 +45,21 @@ Remotes:
     github::BAAQMD/funtools,
     github::BAAQMD/difftools
 Reverse-depends: inventory
-License: MIT
+License: MIT + file LICENSE
 LazyData: true
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 2.1.0),
-    data.table,
     DataBank (>= 2021.04.12),
     datapasta,
     tidyverse,
-    downloader,
     BY2011,
     yeartools,
     here
 Collate: 
     'bind_inventories.R'
     'count_distinct.R'
-    'defunct.R'
     'ensure_distinct.R'
     'exact_join.R'
     'extract_lookup_table.R'
@@ -73,6 +76,7 @@ Collate:
     'patch.R'
     'pivot_table.R'
     'pivot_chart.R'
+    'print_tbl.R'
     'pull_distinct.R'
     'pull_first.R'
     'pull_summary.R'

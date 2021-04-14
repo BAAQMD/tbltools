@@ -39,6 +39,28 @@ test_that("simple case works", {
 
 })
 
+test_that("single argument that is a named list", {
+
+  x <- list(
+    foo = BY2011_test_data,
+    bar = BY2011_test_data)
+
+  test_data <-
+    bind_inventories(x)
+
+  expect_equivalent(
+    nrow(test_data),
+    nrow(BY2011_test_data) * 2)
+
+  expect_true(
+    "inventory" %in% names(test_data))
+
+  expect_setequal(
+    unique(test_data[["inventory"]]),
+    c("foo", "bar"))
+
+})
+
 test_that("all arguments must be named", {
 
   expect_error(

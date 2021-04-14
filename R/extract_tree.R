@@ -3,6 +3,8 @@
 #' @note For use with "Maximum Entropy Summary Tree" R Markdown document(s)
 #'
 #' @export
+#' @importFrom tidyr replace_na
+#' @importFrom dplyr rename
 extract_tree <- function (input_data, form = "column_lineage", ...) {
 
   uid <- function (x, y = rep("", length(x))) {

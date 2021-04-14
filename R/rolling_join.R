@@ -8,6 +8,7 @@
 #' @param \dots other parameters passed on to methods
 #'
 #' @importFrom data.table data.table
+#' @importFrom dplyr as.tbl
 #'
 #' @export
 rolling_join <- function (x, y, by, roll = Inf, allow.cartesian = TRUE, ...) {

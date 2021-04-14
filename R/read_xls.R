@@ -9,6 +9,8 @@
 #' @importFrom readxl read_excel
 #' @importFrom downloader download
 #' @importFrom digest digest
+#' @importFrom utils read.csv
+#' @importFrom stringr str_detect
 #'
 #' @export
 read_xls <- function (file, expect_md5 = NULL, sheet = 1, ..., verbose = getOption("verbose")) {

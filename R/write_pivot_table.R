@@ -6,6 +6,7 @@
 #' @param verbose (logical)
 #'
 #' @export
+#' @importFrom htmlwidgets saveWidget
 write_pivot_table <- function (
   object,
   path,

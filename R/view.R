@@ -8,6 +8,7 @@
 #' @seealso View
 #'
 #' @noRd
+#' @importFrom utils View
 view <- function (..., careful = TRUE, max_rows = 5000, verbose = getOption("verbose")) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[view] ", ...)
