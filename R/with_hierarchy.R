@@ -72,11 +72,13 @@ with_hierarchy <- function (
 
   } else if (is_tx327_data(using)) {
 
+    .Deprecated("`with_hierarchy(DB_category_hierarchy(BY(...)))`")
+
     # Handle the case where a t-table is provided directly
     # (it has to be reshaped!)
     hierarchy_object <-
-      DataBank::DB_hierarchy(
-        using = using,
+      DataBank::DB_category_hierarchy(
+        # using = using, # `DB_category_hierarchy()` doesn't accept a parameter `using` (yet?)
         verbose = verbose)
 
   } else if (inherits(using, "data.frame")) {

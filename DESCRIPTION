@@ -51,6 +51,7 @@ RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
     testthat (>= 2.1.0),
+    DataBank (>= 2021.04.12),
     datapasta,
     tidyverse,
     BY2011,
