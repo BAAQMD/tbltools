@@ -109,7 +109,6 @@ pivot_table <- function (
     do.call(rpivotTable, append(list(data = input_data), pivot_args))
 
   if (!is.null(file)) {
-    require(htmlwidgets)
     saveWidget(pivot_obj, file = file)
   }
 
