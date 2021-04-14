@@ -35,7 +35,8 @@ Imports:
     rlang,
     knitr,
     tidyr,
-    htmlwidgets
+    htmlwidgets,
+    fst
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
