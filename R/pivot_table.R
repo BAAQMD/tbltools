@@ -40,8 +40,6 @@ pivot_table <- function (
   verbose = getOption("verbose")
 ) {
 
-  require(rpivotTable)
-
   year_var <- "year" # FIXME: don't hardcode!
 
   if (missing(columns)) {
