@@ -5,6 +5,7 @@
 #' Returns a tibble instead of a data.frame.
 #'
 #' @export
+#' @importFrom fst read_fst
 read_fst <- function (
   ...,
   verbose = getOption("verbose", default = FALSE)

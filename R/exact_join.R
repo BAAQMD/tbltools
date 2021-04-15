@@ -15,7 +15,7 @@
 #'
 #' @export
 #' @importFrom strtools str_csv
-#' @importFrom dplyr anti_join
+#' @importFrom dplyr anti_join select inner_join all_equal
 exact_join <- function (
   x,
   y,
@@ -25,8 +25,6 @@ exact_join <- function (
   convert = FALSE,
   verbose = TRUE
 ) {
-
-  require(dplyr)
 
   msg <- function (...) if(isTRUE(verbose)) message("[exact_join] ", ...)
 

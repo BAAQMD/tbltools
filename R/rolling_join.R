@@ -12,7 +12,6 @@
 #'
 #' @export
 rolling_join <- function (x, y, by, roll = Inf, allow.cartesian = TRUE, ...) {
-  require(data.table)
   dt_x <- data.table(x, key = by)
   dt_y <- data.table(y, key = by)
   joined <- data.table:::`[.data.table`(dt_y, dt_x, roll = roll, allow.cartesian = allow.cartesian, ...)

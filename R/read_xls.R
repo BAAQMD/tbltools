@@ -16,7 +16,6 @@
 read_xls <- function (file, expect_md5 = NULL, sheet = 1, ..., verbose = getOption("verbose")) {
 
   if (file %>% str_detect("^http")) {
-    require(downloader)
     url <- file
     ext <- str_extract(url, regex("\\.xlsx?$", ignore_case = TRUE))
     file <- file.path(tempdir(), str_c(md5(url), ext))

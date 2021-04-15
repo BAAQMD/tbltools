@@ -40,8 +40,6 @@ pivot_table <- function (
   verbose = getOption("verbose")
 ) {
 
-  require(rpivotTable)
-
   year_var <- "year" # FIXME: don't hardcode!
 
   if (missing(columns)) {
@@ -111,7 +109,6 @@ pivot_table <- function (
     do.call(rpivotTable, append(list(data = input_data), pivot_args))
 
   if (!is.null(file)) {
-    require(htmlwidgets)
     saveWidget(pivot_obj, file = file)
   }
 

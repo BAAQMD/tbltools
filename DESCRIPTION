@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2021.04.13
+Version: 2021.04.15
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -35,7 +35,8 @@ Imports:
     rlang,
     knitr,
     tidyr,
-    htmlwidgets
+    htmlwidgets,
+    fst
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
