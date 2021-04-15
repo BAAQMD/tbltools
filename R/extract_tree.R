@@ -31,7 +31,7 @@ extract_tree <- function (input_data, form = "column_lineage", ...) {
   id_vars <- tidyselect::vars_select(names(input_data), matches("(src|cat)_id"))
 
   parts <- input_data %>%
-    select_(.dots = c(h_vars, id_vars)) %>%
+    select_at(vars(h_vars, id_vars)) %>%
     as.list() %>% lapply(as.character)
 
   root <- data_frame(parent = NA_character_, label = "Bay Area", uid = md5(""), depth = 1, round = 0)
