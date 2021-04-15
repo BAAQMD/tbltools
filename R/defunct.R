@@ -5,7 +5,7 @@
 #'  @importForm stats median
 sort_by_ <- function (input_data, wt_var, group_var, wt_fun = median, na.rm = TRUE) {
   .Defunct()
-  grouped <- dplyr::group_by_(input_data, group_var)
+  grouped <- dplyr::group_by_at(input_data, vars(group_var))
   ranked <- mutate(grouped, .wt = apply(get(wt_var), 1, wt_fun, na.rm = na.rm))
   arrange(ranked, dplyr::desc(.wt))
 }
