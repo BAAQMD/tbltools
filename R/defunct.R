@@ -23,6 +23,8 @@ print_tbl <- function (
   ...
 ) {
 
+  .Defunct()
+
   require(pander)
   require(lubridate)
 

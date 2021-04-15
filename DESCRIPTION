@@ -60,6 +60,7 @@ Suggests:
 Collate: 
     'bind_inventories.R'
     'count_distinct.R'
+    'defunct.R'
     'ensure_distinct.R'
     'exact_join.R'
     'extract_lookup_table.R'
@@ -76,7 +77,6 @@ Collate:
     'patch.R'
     'pivot_table.R'
     'pivot_chart.R'
-    'print_tbl.R'
     'pull_distinct.R'
     'pull_first.R'
     'pull_summary.R'
