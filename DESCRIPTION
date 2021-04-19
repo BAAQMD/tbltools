@@ -9,7 +9,6 @@ Description: Provides a unified interface for efficiently reading and writing
 Depends:
     R (>= 3.1.2),
     dplyr,
-    data.table, 
     tidyselect
 Imports:
     fmatch,
@@ -38,7 +37,8 @@ Imports:
     ensurer,
     tidync,
     lubridate,
-    downloader
+    downloader,
+    data.table
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
