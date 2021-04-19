@@ -25,9 +25,6 @@ print_tbl <- function (
 
   .Defunct()
 
-  require(pander)
-  require(lubridate)
-
   if (nrow(input_data) == 0) {
     message("No data")
     return(invisible(NULL))
