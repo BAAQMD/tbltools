@@ -35,14 +35,16 @@ Imports:
     vartools,
     funtools,
     readr,
-    readxl (>= 0.1.0.9000)
+    readxl (>= 0.1.0.9000),
+    droptools
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
     github::BAAQMD/strtools,
     github::BAAQMD/packtools,
     github::BAAQMD/vartools,
-    github::BAAQMD/funtools
+    github::BAAQMD/funtools,
+    github::BAAQMD/droptools
 Reverse-depends: inventory
 License: MIT + file LICENSE
 LazyData: true
