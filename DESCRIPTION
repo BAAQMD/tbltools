@@ -10,7 +10,6 @@ Depends:
     R (>= 3.1.2),
     vartools,
     funtools,
-    difftools,
     dplyr,
     lubridate,
     readr,
@@ -43,8 +42,7 @@ Remotes:
     github::BAAQMD/strtools,
     github::BAAQMD/packtools,
     github::BAAQMD/vartools,
-    github::BAAQMD/funtools,
-    github::BAAQMD/difftools
+    github::BAAQMD/funtools
 Reverse-depends: inventory
 License: MIT + file LICENSE
 LazyData: true
