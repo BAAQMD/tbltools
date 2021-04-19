@@ -8,9 +8,6 @@ Description: Provides a unified interface for efficiently reading and writing
     emissions-inventory work (the inventory package).
 Depends:
     R (>= 3.1.2),
-    codec,
-    strtools,
-    packtools,
     vartools,
     funtools,
     difftools,
@@ -22,11 +19,6 @@ Depends:
     data.table, 
     digest, 
     downloader, 
-    glue, 
-    lazyeval, 
-    purrr,
-    stringr, 
-    tibble, 
     tidyselect
 Imports:
     fmatch,
@@ -36,7 +28,15 @@ Imports:
     knitr,
     tidyr,
     htmlwidgets,
-    fst
+    fst,
+    codec,
+    strtools,
+    packtools,
+    glue, 
+    lazyeval, 
+    purrr,
+    stringr, 
+    tibble
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
