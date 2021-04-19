@@ -37,7 +37,8 @@ Imports:
     readr,
     readxl (>= 0.1.0.9000),
     droptools,
-    ensurer
+    ensurer,
+    tidync
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
