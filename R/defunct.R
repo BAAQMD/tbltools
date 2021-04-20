@@ -25,8 +25,12 @@ print_tbl <- function (
 
   .Defunct()
 
-  require(pander)
-  require(lubridate)
+  # Commented out by alamstein 4/19/21.
+  # Function is now .Defunct() so we could technically delete all code
+  # But just commenting out these lines to satisfy R CMD check which
+  # prefers we not require() packages from within functions in packages
+  #require(pander)
+  #require(lubridate)
 
   if (nrow(input_data) == 0) {
     message("No data")

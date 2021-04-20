@@ -1,6 +1,6 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2021.04.15
+Version: 2021.04.19
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
@@ -8,25 +8,7 @@ Description: Provides a unified interface for efficiently reading and writing
     emissions-inventory work (the inventory package).
 Depends:
     R (>= 3.1.2),
-    codec,
-    strtools,
-    packtools,
-    vartools,
-    funtools,
-    difftools,
     dplyr,
-    lubridate,
-    readr,
-    readxl (>= 0.1.0.9000),
-    rpivotTable,
-    data.table, 
-    digest, 
-    downloader, 
-    glue, 
-    lazyeval, 
-    purrr,
-    stringr, 
-    tibble, 
     tidyselect
 Imports:
     fmatch,
@@ -36,7 +18,27 @@ Imports:
     knitr,
     tidyr,
     htmlwidgets,
-    fst
+    fst,
+    codec,
+    strtools,
+    packtools,
+    glue, 
+    lazyeval, 
+    purrr,
+    stringr, 
+    tibble,
+    rpivotTable,
+    digest,
+    vartools,
+    funtools,
+    readr,
+    readxl (>= 0.1.0.9000),
+    droptools,
+    ensurer,
+    tidync,
+    lubridate,
+    downloader,
+    data.table
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
@@ -44,7 +46,7 @@ Remotes:
     github::BAAQMD/packtools,
     github::BAAQMD/vartools,
     github::BAAQMD/funtools,
-    github::BAAQMD/difftools
+    github::BAAQMD/droptools
 Reverse-depends: inventory
 License: MIT + file LICENSE
 LazyData: true

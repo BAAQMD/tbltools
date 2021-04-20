@@ -27,6 +27,8 @@
 #' @importFrom stringr str_replace fixed
 #' @importFrom vartools drop_vars
 #' @importFrom packtools pack_integers
+#' @importFrom droptools my_dropbox
+#' @importFrom ensurer ensure
 with_hierarchy <- function (
   input_data,
   using = NULL,
