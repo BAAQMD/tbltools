@@ -44,7 +44,7 @@ test_that("named categories", {
     "Cooking" = 285L)
 
   expected <-
-    enframe(
+    tibble::enframe(
       test_categories,
       name = "category",
       value = "cat_id") %>%

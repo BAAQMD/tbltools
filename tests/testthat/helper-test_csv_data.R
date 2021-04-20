@@ -1,3 +1,6 @@
+library(stringr)
+library(tidyr)
+
 test_csv_file <-
   here::here(
     "tests",

@@ -7,6 +7,7 @@
 #'
 #' @export
 #' @importFrom dplyr select_if
+#' @importFrom funtools all_true
 import_hierarchy <- function (
   file,
   ...,
@@ -27,8 +28,8 @@ import_hierarchy <- function (
   hierarchy_object <-
     full_path %>%
     read_tbl() %>%
-    select_if(
-      ~ !(all_true(is.na(.)))) %>%
+    dplyr::select_if(
+      ~ !(funtools::all_true(is.na(.)))) %>%
     validate_hierarchy(
       verbose = verbose)
 
