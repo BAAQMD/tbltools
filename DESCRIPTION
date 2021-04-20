@@ -96,7 +96,6 @@ Collate:
     'select_first.R'
     'select_last.R'
     'show_duplicates.R'
-    'sort_by.R'
     'sum_across.R'
     'update.data.frame.R'
     'update.list.R'
