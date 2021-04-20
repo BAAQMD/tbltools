@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @importFrom tidyr replace_na
-#' @importFrom dplyr rename
+#' @importFrom dplyr rename select
 extract_tree <- function (input_data, form = "column_lineage", ...) {
 
   uid <- function (x, y = rep("", length(x))) {
@@ -31,7 +31,7 @@ extract_tree <- function (input_data, form = "column_lineage", ...) {
   id_vars <- tidyselect::vars_select(names(input_data), matches("(src|cat)_id"))
 
   parts <- input_data %>%
-    select_(.dots = c(h_vars, id_vars)) %>%
+    dplyr::select(!!h_vars, !!id_vars) %>%
     as.list() %>% lapply(as.character)
 
   root <- data_frame(parent = NA_character_, label = "Bay Area", uid = md5(""), depth = 1, round = 0)

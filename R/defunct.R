@@ -3,7 +3,7 @@
 #' @export
 #' @importFrom rlang int
 #' @importFrom stringr str_replace_all
-#' @importFrom dplyr select_ funs
+#' @importFrom dplyr select funs
 #' @importFrom knitr kable
 print_tbl <- function (
   input_data,
@@ -69,7 +69,7 @@ print_tbl <- function (
   fmt_str <- . %>% format(na.encode = FALSE) %>% replace_which(is.na(.), "")
 
   if (isTRUE(column_totals)) {
-    column_totals <- input_data %>% select_(.dots = num_vars) %>% total_each()
+    column_totals <- input_data %>% dplyr::select(!!num_vars) %>% total_each()
     preformatted <- bind_rows(input_data, column_totals)
   } else {
     preformatted <- input_data
