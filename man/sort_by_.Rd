@@ -8,6 +8,6 @@ sort_by_(input_data, wt_var, group_var, wt_fun = median, na.rm = TRUE)
 }
 \description{
 @export
-@importFrom dplyr group_by_ desc
+@importFrom dplyr mutate desc across
 @importForm stats median
 }
