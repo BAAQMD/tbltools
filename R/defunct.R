@@ -3,7 +3,7 @@
 #' @export
 #' @importFrom rlang int
 #' @importFrom stringr str_replace_all
-#' @importFrom dplyr select_ funs
+#' @importFrom dplyr select funs
 #' @importFrom knitr kable
 print_tbl <- function (
   input_data,
@@ -69,7 +69,7 @@ print_tbl <- function (
   fmt_str <- . %>% format(na.encode = FALSE) %>% replace_which(is.na(.), "")
 
   if (isTRUE(column_totals)) {
-    column_totals <- input_data %>% select_(.dots = num_vars) %>% total_each()
+    column_totals <- input_data %>% dplyr::select(!!num_vars) %>% total_each()
     preformatted <- bind_rows(input_data, column_totals)
   } else {
     preformatted <- input_data
@@ -113,13 +113,13 @@ print_tbl <- function (
 #' Sort by a summary (statistic) of a (grouping) variable
 #'
 #'  @export
-#'  @importFrom dplyr group_by_ desc
+#'  @importFrom dplyr mutate desc across
 #'  @importForm stats median
 sort_by_ <- function (input_data, wt_var, group_var, wt_fun = median, na.rm = TRUE) {
   .Defunct()
 
-  grouped <- dplyr::group_by_(input_data, group_var)
-  ranked <- mutate(grouped, .wt = apply(get(wt_var), 1, wt_fun, na.rm = na.rm))
+  ranked <- input_data %>%
+    dplyr::mutate(dplyr::across(!!group_var), .wt = apply(get(wt_var), 1, wt_fun, na.rm = na.rm))
   arrange(ranked, dplyr::desc(.wt))
 }
 
