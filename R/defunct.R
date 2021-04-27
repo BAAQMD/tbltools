@@ -5,6 +5,7 @@
 #' @importFrom stringr str_replace_all
 #' @importFrom dplyr select funs
 #' @importFrom knitr kable
+#' @importFrom tidyselect one_of
 print_tbl <- function (
   input_data,
   caption = comment(input_data),
@@ -78,27 +79,27 @@ print_tbl <- function (
   if (length(id_vars) > 0) {
     if (verbose) message("Formatting as ID:\t", paste_csv(id_vars))
     id_cols <- as.character(match(id_vars, names(input_data))) # WORKAROUND for dplyr bug
-    preformatted <- mutate_at(preformatted, vars(one_of(id_cols)), funs(fmt_id))
+    preformatted <- mutate_at(preformatted, vars(tidyselect::one_of(id_cols)), funs(fmt_id))
   }
 
   if (length(int_vars) > 0) {
     if (verbose) message("Formatting as integer:\t", paste_csv(int_vars))
     int_cols <- as.character(match(int_vars, names(input_data))) # WORKAROUND for dplyr bug
-    preformatted <- mutate_at(preformatted, vars(one_of(int_cols)), funs(fmt_int))
+    preformatted <- mutate_at(preformatted, vars(tidyselect::one_of(int_cols)), funs(fmt_int))
   }
 
   if (length(num_vars) > 0) {
     if (verbose) message("Formatting as numeric:\t", paste_csv(num_vars))
     num_cols <- as.character(match(num_vars, names(input_data))) # WORKAROUND for dplyr bug
-    preformatted <- mutate_at(preformatted, vars(one_of(num_cols)), funs(fmt_num))
+    preformatted <- mutate_at(preformatted, vars(tidyselect::one_of(num_cols)), funs(fmt_num))
   }
 
   if (length(str_vars) > 0) {
     if (verbose) message("Formatting as string:\t", paste_csv(str_vars))
     str_cols <- as.character(match(str_vars, names(input_data))) # WORKAROUND for dplyr bug
-    preformatted <- mutate_at(preformatted, vars(one_of(str_cols)), funs(fmt_str))
+    preformatted <- mutate_at(preformatted, vars(tidyselect::one_of(str_cols)), funs(fmt_str))
     if (non_breaking) {
-      preformatted <- preformatted %>% mutate_at(vars(one_of(str_cols)), funs(format_nonbreaking))
+      preformatted <- preformatted %>% mutate_at(vars(tidyselect::one_of(str_cols)), funs(format_nonbreaking))
     }
   }
 
