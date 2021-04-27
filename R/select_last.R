@@ -7,6 +7,7 @@
 #'
 #' @return
 #' @export
+#' @importFrom tidyselect everything
 #'
 select_last <- function (input_data, ...) {
 
@@ -16,7 +17,7 @@ select_last <- function (input_data, ...) {
   select(
     input_data,
     -all_of(selected_vars),
-    everything(),
+    tidyselect::everything(),
     all_of(selected_vars))
 
 }
