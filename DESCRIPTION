@@ -1,15 +1,13 @@
 Package: tbltools
 Title: Read/Write and Manipulate Tabular Data
-Version: 2021.04.19
+Version: 2021.04.27
 Authors@R: "David Holstius <dholstius@baaqmd.gov> [aut, cre]"
 Description: Provides a unified interface for efficiently reading and writing
     tabular data to and from files. Places emphasis on CSV as a persistent data
     format. Thinly wraps rpivotTable() in a way that's especially helpful for
     emissions-inventory work (the inventory package).
 Depends:
-    R (>= 3.1.2),
-    dplyr,
-    tidyselect
+    R (>= 3.1.2)
 Imports:
     fmatch,
     magrittr,
@@ -38,7 +36,9 @@ Imports:
     tidync,
     lubridate,
     downloader,
-    data.table
+    data.table,
+    dplyr,
+    tidyselect
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
