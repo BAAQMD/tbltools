@@ -7,6 +7,7 @@
 #'
 #' @importFrom fmatch fmatch
 #' @importFrom tidyselect one_of
+#' @importFrom stringr str_replace_all
 #'
 #' @export
 wildcard_join <- function (x, y, by, wildcard = "X", keep_pattern = FALSE, ...) {
@@ -14,7 +15,7 @@ wildcard_join <- function (x, y, by, wildcard = "X", keep_pattern = FALSE, ...) 
   stopifnot(length(by) == 1, is.character(by))
 
   codes <- as.character(x[[by]])
-  patterns <- as.character(y[[by]]) %>% str_replace_all(wildcard, fixed("?"))
+  patterns <- as.character(y[[by]]) %>% stringr::str_replace_all(wildcard, fixed("?"))
 
   i <- fmatch::fmatch(codes, patterns)
   match_data <- y[i, ]
