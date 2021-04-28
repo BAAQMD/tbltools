@@ -13,7 +13,6 @@ Imports:
     magrittr,
     forcats,
     rlang,
-    knitr,
     tidyr,
     htmlwidgets,
     fst,
