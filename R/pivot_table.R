@@ -24,6 +24,7 @@
 #' @importFrom funtools every_nth
 #' @importFrom purrr map_chr imap
 #' @importFrom htmlwidgets saveWidget
+#' @importFrom dplyr first
 pivot_table <- function (
   input_data,
   rows,
@@ -62,7 +63,7 @@ pivot_table <- function (
     } else if ("tput_qty" %in% names(input_data)) {
       values <- "tput_qty"
     } else {
-      values <- first(tidyselect::vars_select(names(input_data), matches("_qty$")))
+      values <- dplyr::first(tidyselect::vars_select(names(input_data), matches("_qty$")))
     }
   }
 

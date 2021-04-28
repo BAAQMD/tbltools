@@ -11,6 +11,7 @@
 #'
 #' @export
 #' @importFrom codec decode
+#' @importFrom dplyr first
 filter_categories <- function (
   input_data,
   ...,
@@ -22,9 +23,9 @@ filter_categories <- function (
     stop("[filter_categories] input data must have a column named cat_id")
   }
 
-  if (inherits(first(list(...)), "data.frame")) {
+  if (inherits(dplyr::first(list(...)), "data.frame")) {
     categories <-
-      pull_distinct(first(list(...)), cat_id)
+      pull_distinct(dplyr::first(list(...)), cat_id)
   } else {
     categories <-
       packtools::unpack_args(

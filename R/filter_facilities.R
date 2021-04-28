@@ -25,6 +25,7 @@
 #' @seealso [with_IRIS_site()]
 #'
 #' @export
+#' @importFrom dplyr first
 filter_facilities <- function (
   input_data,
   ...,
@@ -36,9 +37,9 @@ filter_facilities <- function (
     stop("[filter_facilities] input data must have a column named fac_id")
   }
 
-  if (inherits(first(list(...)), "data.frame")) {
+  if (inherits(dplyr::first(list(...)), "data.frame")) {
     facilities <-
-      pull_distinct(first(list(...)), fac_id)
+      pull_distinct(dplyr::first(list(...)), fac_id)
   } else {
     facilities <-
       packtools::unpack_args(
