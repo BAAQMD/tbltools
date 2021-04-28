@@ -33,6 +33,7 @@
 NULL
 
 #' @export
+#' @importFrom rlang enquo
 scale_at <- function (
   .tbl,
   .vars,
@@ -43,7 +44,7 @@ scale_at <- function (
 ) {
 
   # Capture for non-standard evaluation
-  .by <- enquo(by)
+  .by <- rlang::enquo(by)
 
   # Random string to use as a temporary column within `.tbl`
   tmpvar <- "foo" # digest::digest(rnorm(1))

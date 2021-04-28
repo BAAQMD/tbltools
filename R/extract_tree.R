@@ -4,7 +4,7 @@
 #'
 #' @export
 #' @importFrom tidyr replace_na
-#' @importFrom dplyr rename select
+#' @importFrom dplyr rename select funs
 #' @importFrom tibble tibble
 extract_tree <- function (input_data, form = "column_lineage", ...) {
 
@@ -39,6 +39,6 @@ extract_tree <- function (input_data, form = "column_lineage", ...) {
   reduced <- Reduce(graft, parts, init = root) %>% filter(label != "") %>% dplyr::select(-round)
 
   encode_uids <- . %>% factor(levels = unique(reduced$uid)) %>% as.integer
-  reduced %>% rename(node = uid) %>% distinct() %>% mutate_at(vars(node, parent), funs(encode_uids))
+  reduced %>% rename(node = uid) %>% distinct() %>% mutate_at(vars(node, parent), dplyr::funs(encode_uids))
 
 }
