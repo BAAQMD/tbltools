@@ -147,3 +147,34 @@ test_that("names are converted to factor levels, in the order supplied", {
     c("BY2008", "BY2011"))
 
 })
+
+test_that("throughputs works, even with no emissions", {
+
+  test_data <-
+    bind_inventories(
+      foo = tibble(year = RY(2011), tput_qty = 999, tput_unit = "MMcf"),
+      bar = tibble(year = RY(2012), tput_qty = 333, tput_unit = "MMcf"))
+
+  expect_is(
+    test_data[["inventory"]],
+    "factor")
+
+  expect_equivalent(
+    levels(test_data[["inventory"]]),
+    c("BY2011", "BY2008"))
+
+  #
+  # Now try the opposite order
+  #
+
+  test_data <-
+    bind_inventories(
+      BY2008 = BY2008_test_data,
+      BY2011 = BY2011_test_data)
+
+  expect_equivalent(
+    levels(test_data[["inventory"]]),
+    c("BY2008", "BY2011"))
+
+})
+
