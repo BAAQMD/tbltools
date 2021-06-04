@@ -47,25 +47,24 @@ bind_inventories <- function (
   names(data_list)[names(data_list) == ""] <- "NA"
 
   #
-  # Check that all inventories in `...` have the same `ems_unit`.
+  # Check that all inventories in `...` have the same `ems_unit`,
+  # if any have an `ems_qty` column.
   #
+  if ("ems_qty" %in% reduce(map(data_list, names), union)) {
 
-  ems_unit_values <-
-    map(
-      data_list,
-      ~ pull(., ems_unit)) %>%
-    unlist()
+    ems_unit_values <-
+      map(data_list, pull, ems_unit) %>%
+      unlist()
 
-  msg("ems_unit is: ", strtools::str_csv(ems_unit_values))
+    if (isFALSE(all_same(ems_unit_values))) {
 
-  if (!all_same(ems_unit_values)) {
+      err_msg <- paste0(
+        "inventories must have same `ems_unit`. ",
+        "Try using convert_emission_units() first?")
 
-    err_msg <- paste0(
-      "inventories must have same `ems_unit`. ",
-      "Try using convert_emission_units() first?")
+      stop(err_msg)
 
-    stop(err_msg)
-
+    }
   }
 
   #
@@ -75,23 +74,26 @@ bind_inventories <- function (
   # Otherwise, `bind_rows()` would throw an error. It's type-sensitive.
   #
 
-  cat_id_classes <-
-    map(
-      data_list,
-      ~ class(.$cat_id)) %>%
-    unlist()
+  if ("cat_id" %in% reduce(map(data_list, names), union)) {
 
-  if ("character" %in% cat_id_classes) {
 
-    msg("coercing `cat_id` to character")
+    cat_id_classes <-
+      map(data_list, ~ class(.$cat_id)) %>%
+      unlist()
 
-    data_list <-
-      map(
-        data_list,
-        ~ mutate_at(
-          .,
-          vars(cat_id),
-          list(as.character)))
+    if ("character" %in% cat_id_classes) {
+
+      msg("coercing `cat_id` to character")
+
+      data_list <-
+        map(
+          data_list,
+          ~ mutate_at(
+            .,
+            vars(cat_id),
+            list(as.character)))
+
+    }
 
   }
 
@@ -136,7 +138,9 @@ bind_inventories <- function (
       vars(!!.id),
       fct_inorder) %>%
     select(
-      -.name)
+      -.name) %>%
+    select_first(
+      !!.id)
 
   return(labeled_data)
 
