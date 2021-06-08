@@ -2,7 +2,7 @@
 % Please edit documentation in R/select_last.R
 \name{select_last}
 \alias{select_last}
-\title{Move selected column(s) to last position}
+\title{Move selected column(s) to last position(s)}
 \usage{
 select_last(input_data, ...)
 }
@@ -15,7 +15,7 @@ select_last(input_data, ...)
 
 }
 \description{
-Move selected column(s) to last position
+Move selected column(s) to last position(s)
 }
 \seealso{
 \code{\link[=select_first]{select_first()}}
