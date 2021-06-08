@@ -2,7 +2,7 @@
 % Please edit documentation in R/select_first.R
 \name{select_first}
 \alias{select_first}
-\title{Move selected column(s) to first position}
+\title{Move selected column(s) to first position(s)}
 \usage{
 select_first(input_data, ...)
 }
@@ -15,7 +15,7 @@ select_first(input_data, ...)
 
 }
 \description{
-Move selected column(s) to first position
+Move selected column(s) to first position(s)
 }
 \seealso{
 \code{\link[=select_last]{select_last()}}
