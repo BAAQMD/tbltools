@@ -1,7 +1,10 @@
-#' Move selected column(s) to last position
+#' Move selected column(s) to last position(s)
 #'
 #' @param input_data tabular data
 #' @param ... column name(s)
+#'
+#' @importFrom tidyselect vars_select all_of
+#' @importFrom dplyr select
 #'
 #' @seealso [select_first()]
 #'
@@ -9,15 +12,9 @@
 #' @export
 #' @importFrom tidyselect everything all_of
 #'
-select_last <- function (input_data, ...) {
-
-  selected_vars <-
-    names(select(input_data, ...))
-
-  select(
-    input_data,
-    -all_of(selected_vars),
-    tidyselect::everything(),
-    tidyselect::all_of(selected_vars))
-
+select_last <- function (input_data, ...)  {
+  selected_vars <- tidyselect::vars_select(names(input_data), ...)
+  other_vars <- setdiff(names(input_data), selected_vars)
+  selected_data <- dplyr::select(input_data, tidyselect::all_of(other_vars), tidyselect::all_of(selected_vars))
+  return(selected_data)
 }
