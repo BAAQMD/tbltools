@@ -37,7 +37,8 @@ Imports:
     downloader,
     data.table,
     dplyr,
-    tidyselect
+    tidyselect,
+    conflicted
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
