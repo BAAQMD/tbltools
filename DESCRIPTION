@@ -106,4 +106,5 @@ Collate:
     'write_csv.R'
     'write_pivot_table.R'
     'zip_file.R'
+    'zzz.R'
 Encoding: UTF-8
