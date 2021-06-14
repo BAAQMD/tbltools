@@ -10,6 +10,7 @@
 #'
 #' @return
 #' @export
+#' @importFrom tidyselect everything all_of
 #'
 select_last <- function (input_data, ...)  {
   selected_vars <- tidyselect::vars_select(names(input_data), ...)

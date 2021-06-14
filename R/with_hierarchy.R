@@ -29,6 +29,8 @@
 #' @importFrom packtools pack_integers
 #' @importFrom droptools my_dropbox
 #' @importFrom ensurer ensure
+#' @importFrom tidyselect num_range
+#' @importFrom stats na.omit
 with_hierarchy <- function (
   input_data,
   using = NULL,
@@ -128,7 +130,7 @@ with_hierarchy <- function (
   h_vars <-
     tidyselect::vars_select(
       h_vars,
-      num_range(h_prefix, 0:depth))
+      tidyselect::num_range(h_prefix, 0:depth))
 
   recode_h_var <- function (x) {
     return(as.character(x))
@@ -172,7 +174,7 @@ with_hierarchy <- function (
         by = id_var) %>%
       pull(
         id_var) %>%
-      na.omit()
+      stats::na.omit()
 
     if (length(unmatched_ids) > 0) {
       warning("[with_hierarchy] these ids have no match in the hierarchy: ", pack_integers(unmatched_ids))

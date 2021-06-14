@@ -28,10 +28,10 @@ test_that("everything, variable in data", {
   x <- pull(mtcars, cyl)
 
   expected <-
-    mutate_at(mtcars, vars(everything()), ~ . * x)
+    mutate_at(mtcars, vars(tidyselect::everything()), ~ . * x)
 
   expect_equivalent(
-    multiply_at(mtcars, vars(everything()), by = cyl),
+    multiply_at(mtcars, vars(tidyselect::everything()), by = cyl),
     expected)
 
 })

@@ -6,13 +6,13 @@
 #' @param verbose (logical)
 #'
 #' @export
-#' @importFrom dplyr filter_at all_vars
+#' @importFrom dplyr filter_at all_vars last
 extract_lookup_table <- function (input_data, ..., na.rm = TRUE, verbose = getOption("verbose")) {
 
   msg <- function (...) if(isTRUE(verbose)) message("[extract_lookup_table] ", ...)
 
   extract_vars <- tidyselect::vars_select(names(input_data), ...)
-  value_var <- last(extract_vars)
+  value_var <- dplyr::last(extract_vars)
   key_vars <- setdiff(extract_vars, value_var)
   msg("building mapping from (", paste_csv(key_vars), ") to ", value_var)
 

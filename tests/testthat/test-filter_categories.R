@@ -54,7 +54,7 @@ test_that("named categories", {
     mutate(
       cat_h0 = "Area") %>%
     select(
-      cat_id, cat_h0, category, everything())
+      cat_id, cat_h0, category, tidyselect::everything())
 
   test_data %>%
     filter_categories(

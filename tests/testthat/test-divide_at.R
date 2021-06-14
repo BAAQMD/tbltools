@@ -25,8 +25,8 @@ test_that("everything, variable in data", {
   x <- pull(mtcars, cyl)
 
   expect_equivalent(
-    divide_at(mtcars, vars(everything()), by = cyl),
-    mutate_at(mtcars, vars(everything()), ~ . / x))
+    divide_at(mtcars, vars(tidyselect::everything()), by = cyl),
+    mutate_at(mtcars, vars(tidyselect::everything()), ~ . / x))
 
 })
 

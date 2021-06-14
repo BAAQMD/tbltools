@@ -7,15 +7,12 @@ Description: Provides a unified interface for efficiently reading and writing
     format. Thinly wraps rpivotTable() in a way that's especially helpful for
     emissions-inventory work (the inventory package).
 Depends:
-    R (>= 3.1.2),
-    dplyr,
-    tidyselect
+    R (>= 3.1.2)
 Imports:
     fmatch,
     magrittr,
     forcats,
     rlang,
-    knitr,
     tidyr,
     htmlwidgets,
     fst,
@@ -39,7 +36,8 @@ Imports:
     lubridate,
     downloader,
     data.table,
-    conflicted
+    dplyr,
+    tidyselect
 Remotes:
     github::BAAQMD/fmatch,
     github::BAAQMD/codec,
