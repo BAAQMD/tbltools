@@ -77,7 +77,6 @@ Collate:
     'filter_years.R'
     'fun_join.R'
     'import_hierarchy.R'
-    'onAttach.R'
     'paste_csv.R'
     'patch.R'
     'pivot_table.R'
@@ -109,4 +108,5 @@ Collate:
     'write_csv.R'
     'write_pivot_table.R'
     'zip_file.R'
+    'zzz.R'
 Encoding: UTF-8
