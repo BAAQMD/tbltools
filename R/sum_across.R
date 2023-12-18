@@ -5,9 +5,10 @@
 #' @param na.rm logical
 #' @param .groups passed to [dplyr::summarise()]
 #'
-#' @importFrom dplyr summarize across
+#' @importFrom dplyr summarise across
+#' @importFrom units drop_units
+#' @importFrom unittools restore_units
 #'
-#' @return
 #' @export
 #'
 sum_across <- function (
@@ -17,11 +18,22 @@ sum_across <- function (
   .groups = "drop"
 ) {
 
-  dplyr::summarise(
-    input_data,
-    dplyr::across(
-      c(...),
-      ~ sum(., na.rm = na.rm)),
-    .groups = .groups)
+  unitless_data <-
+    units::drop_units(input_data)
+
+  summarised_data <-
+    dplyr::summarise(
+      unitless_data,
+      dplyr::across(
+        c(...),
+        ~ sum(., na.rm = na.rm)),
+      .groups = .groups)
+
+  unit_aware_data <-
+    unittools::restore_units(
+      to = summarised_data,
+      from = input_data)
+
+  return(unit_aware_data)
 
 }

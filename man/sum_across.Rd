@@ -15,9 +15,6 @@ sum_across(input_data, ..., na.rm = TRUE, .groups = "drop")
 
 \item{.groups}{passed to \code{\link[dplyr:summarise]{dplyr::summarise()}}}
 }
-\value{
-
-}
 \description{
 sum_across
 }
