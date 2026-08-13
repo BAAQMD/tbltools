@@ -43,8 +43,8 @@ columns remain the same.
 }
 \section{Functions}{
 \itemize{
-\item \code{multiply_at}: multiplication
+\item \code{multiply_at()}: multiplication
 
-\item \code{divide_at}: division
+\item \code{divide_at()}: division
+
 }}
-

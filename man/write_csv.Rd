@@ -35,8 +35,8 @@ write_csv(
 \item{...}{further arguments to \link{write.csv}}
 }
 \value{
-\preformatted{      \code{input_data}, possibly modified. See Note for details.
-}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{      \code{input_data}, possibly modified. See Note for details.
+}\if{html}{\out{</div>}}
 }
 \description{
 Write to a CSV file

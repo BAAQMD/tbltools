@@ -18,8 +18,8 @@ zip_file(x, file, flags = "-q", clean = TRUE, ...)
 \item{...}{further arguments to \link{zip}}
 }
 \value{
-\preformatted{      \code{file}, invisibly (for chaining)
-}
+\if{html}{\out{<div class="sourceCode">}}\preformatted{      \code{file}, invisibly (for chaining)
+}\if{html}{\out{</div>}}
 }
 \description{
 Write to ZIP file

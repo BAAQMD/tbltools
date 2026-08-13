@@ -11,9 +11,6 @@ select_last(input_data, ...)
 
 \item{...}{column name(s)}
 }
-\value{
-
-}
 \description{
 Move selected column(s) to last position(s)
 }

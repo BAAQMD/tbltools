@@ -53,103 +53,130 @@ importFrom(conflicted,conflict_prefer)
 importFrom(data.table,data.table)
 importFrom(digest,digest)
 importFrom(downloader,download)
-importFrom(dplyr,across)
-importFrom(dplyr,all_equal)
-importFrom(dplyr,all_vars)
-importFrom(dplyr,anti_join)
-importFrom(dplyr,arrange)
-importFrom(dplyr,arrange_at)
-importFrom(dplyr,as.tbl)
-importFrom(dplyr,bind_cols)
-importFrom(dplyr,bind_rows)
-importFrom(dplyr,coalesce)
-importFrom(dplyr,count)
-importFrom(dplyr,distinct)
-importFrom(dplyr,filter)
-importFrom(dplyr,filter_at)
-importFrom(dplyr,first)
-importFrom(dplyr,funs)
-importFrom(dplyr,group_by)
-importFrom(dplyr,if_else)
-importFrom(dplyr,inner_join)
-importFrom(dplyr,last)
-importFrom(dplyr,left_join)
-importFrom(dplyr,matches)
-importFrom(dplyr,mutate)
-importFrom(dplyr,mutate_at)
-importFrom(dplyr,mutate_if)
-importFrom(dplyr,n)
-importFrom(dplyr,n_distinct)
-importFrom(dplyr,na_if)
-importFrom(dplyr,pull)
-importFrom(dplyr,rename)
-importFrom(dplyr,select)
-importFrom(dplyr,select_if)
-importFrom(dplyr,select_vars)
-importFrom(dplyr,semi_join)
-importFrom(dplyr,slice)
-importFrom(dplyr,summarise)
-importFrom(dplyr,tally)
-importFrom(dplyr,vars)
+importFrom(dplyr,
+  across,
+  all_equal,
+  all_vars,
+  anti_join,
+  arrange,
+  arrange_at,
+  as.tbl,
+  bind_cols,
+  bind_rows,
+  coalesce,
+  count,
+  distinct,
+  filter,
+  filter_at,
+  first,
+  funs,
+  group_by,
+  if_else,
+  inner_join,
+  last,
+  left_join,
+  matches,
+  mutate,
+  mutate_at,
+  mutate_if,
+  n,
+  n_distinct,
+  na_if,
+  pull,
+  rename,
+  select,
+  select_if,
+  semi_join,
+  slice,
+  summarise,
+  tally,
+  vars
+)
 importFrom(droptools,my_dropbox)
 importFrom(ensurer,ensure)
 importFrom(fmatch,fmatch)
 importFrom(forcats,fct_inorder)
 importFrom(fst,read_fst)
-importFrom(funtools,"%not_in%")
-importFrom(funtools,all_same)
-importFrom(funtools,all_true)
-importFrom(funtools,every_nth)
-importFrom(funtools,md5)
+importFrom(funtools,
+  "%not_in%",
+  all_same,
+  all_true,
+  every_nth,
+  md5
+)
 importFrom(glue,glue)
 importFrom(htmlwidgets,saveWidget)
-importFrom(lazyeval,expr_text)
-importFrom(lazyeval,lazy_dots)
-importFrom(lazyeval,lazy_eval)
+importFrom(lazyeval,
+  expr_text,
+  lazy_dots,
+  lazy_eval
+)
 importFrom(lubridate,is.POSIXt)
 importFrom(magrittr,"%>%")
-importFrom(packtools,pack_integers)
-importFrom(packtools,unpack_list)
-importFrom(purrr,imap)
-importFrom(purrr,map)
-importFrom(purrr,map_chr)
-importFrom(purrr,reduce)
-importFrom(purrr,safely)
-importFrom(readr,parse_integer)
-importFrom(readr,read_csv)
+importFrom(packtools,
+  pack_integers,
+  unpack_list
+)
+importFrom(purrr,
+  imap,
+  map,
+  map_chr,
+  reduce,
+  safely
+)
+importFrom(readr,
+  parse_integer,
+  read_csv
+)
 importFrom(readxl,read_excel)
-importFrom(rlang,":=")
-importFrom(rlang,enquo)
-importFrom(rlang,is_bare_double)
+importFrom(rlang,
+  ":=",
+  enquo,
+  is_bare_double
+)
 importFrom(rpivotTable,rpivotTable)
 importFrom(stats,na.omit)
-importFrom(stringr,fixed)
-importFrom(stringr,str_c)
-importFrom(stringr,str_detect)
-importFrom(stringr,str_extract)
-importFrom(stringr,str_match)
-importFrom(stringr,str_replace)
-importFrom(stringr,str_replace_all)
-importFrom(stringr,str_trim)
-importFrom(strtools,str_and)
-importFrom(strtools,str_csv)
-importFrom(strtools,str_or)
-importFrom(strtools,str_printable)
-importFrom(tibble,as_tibble)
-importFrom(tibble,tibble)
-importFrom(tidync,hyper_tibble)
-importFrom(tidync,tidync)
+importFrom(stringr,
+  fixed,
+  str_c,
+  str_detect,
+  str_extract,
+  str_match,
+  str_replace,
+  str_replace_all,
+  str_trim
+)
+importFrom(strtools,
+  str_and,
+  str_csv,
+  str_or,
+  str_printable
+)
+importFrom(tibble,
+  as_tibble,
+  tibble
+)
+importFrom(tidync,
+  hyper_tibble,
+  tidync
+)
 importFrom(tidyr,replace_na)
-importFrom(tidyselect,all_of)
-importFrom(tidyselect,everything)
-importFrom(tidyselect,num_range)
-importFrom(tidyselect,one_of)
-importFrom(tidyselect,vars_select)
+importFrom(tidyselect,
+  all_of,
+  everything,
+  num_range,
+  one_of,
+  vars_select
+)
 importFrom(units,drop_units)
 importFrom(unittools,restore_units)
-importFrom(utils,View)
-importFrom(utils,read.csv)
-importFrom(utils,timestamp)
-importFrom(utils,write.csv)
-importFrom(vartools,drop_vars)
-importFrom(vartools,find_id_var)
+importFrom(utils,
+  View,
+  read.csv,
+  timestamp,
+  write.csv
+)
+importFrom(vartools,
+  drop_vars,
+  find_id_var
+)

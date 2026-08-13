@@ -11,9 +11,6 @@ select_first(input_data, ...)
 
 \item{...}{column name(s)}
 }
-\value{
-
-}
 \description{
 Move selected column(s) to first position(s)
 }

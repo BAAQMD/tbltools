@@ -13,9 +13,6 @@ read_ncdf(path, ..., verbose = getOption("verbose"))
 
 \item{verbose}{logical}
 }
-\value{
-
-}
 \description{
 Import the contents of a NetCDF file as a \code{tibble}.
 }

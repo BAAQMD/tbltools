@@ -1,7 +1,7 @@
 #' @noRd
 #'
 #' @seealso filter_facilities filter_pollutants
-#' @importFrom dplyr select_vars
+#' @importFrom tidyselect vars_select
 #' @importFrom packtools unpack_list
 filter_and_label <- function (input_data, whitelist, id_var, label_var, ..., overwrite = TRUE, verbose = getOption("verbose")) {
 
@@ -11,7 +11,7 @@ filter_and_label <- function (input_data, whitelist, id_var, label_var, ..., ove
 
   # Make sure `id_var` is actually in `input_data`
   tryCatch(
-    id_var <- select_vars(input_vars, id_var),
+    id_var <- vars_select(input_vars, id_var),
     error = function (e) stop(str_c("Could not find ", id_var, " in your data")))
 
   # Try to warn the user about accidental overwrites
